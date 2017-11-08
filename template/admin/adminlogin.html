@@ -1,0 +1,43 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block pagetitle %}  CREATE | Physics Grip {% endblock %}
+
+{% block import %}
+
+	<link href="{% static 'CSS/admin/base.css' %}" rel="stylesheet">
+	<link href="{% static 'CSS/admin/adminlogin.css' %}" rel="stylesheet">
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jqueryui.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+{% endblock %}
+
+{% block write_js %}
+
+{% endblock  %}
+
+
+{% block main_content  %}
+	<div id="header">
+		<h2 style="color:#333"> ADMIN LOGIN </h2>
+	</div>
+	<form method="post" action="/admin/adminloginrequest/">
+	{% csrf_token %}
+		<div id="form-content">
+			<div class="left-content">
+				<strong class="s-attr-f"> User Name :</strong>
+				<strong class="s-attr"> Password :</strong>
+			</div>
+			<div class="right-content">
+				<input type="text" name="admin_name" placeholder="User Name" class="fst">
+				<input type="password" name="admin_pswd" placeholder="Password" class="s-input">
+			</div>
+			<div>
+				<button type="submit" name="login"  class="buttons" style="margin-left: 42%; margin-top:20px; height:40px;"> ADMIN LOGIN </button>
+			</div>
+		</div>
+
+
+{% endblock %}

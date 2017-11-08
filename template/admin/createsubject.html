@@ -1,0 +1,87 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block pagetitle %}  CREATE | Physics Grip {% endblock %}
+
+{% block import %}
+
+	<link href="{% static 'CSS/admin/base.css' %}" rel="stylesheet">
+	<link href="{% static 'CSS/admin/createsubject.css' %}" rel="stylesheet">
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jqueryui.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+{% endblock %}
+
+{% block write_js %}
+
+{% endblock  %}
+
+
+{% block main_content  %}
+	<div id="header">
+		<h2 style="color:#333"> CREATE NEW SUBJECT </h2>
+	</div>
+	<form method="post" action="/admin/createordeletesubject/">
+	{% csrf_token %}
+		<div id="form-content">
+			<div class="left-content">
+				<strong class="s-attr-f"> Subject Name</strong>
+				<strong class="s-attr"> No. of lectures</strong>
+				<strong class="s-attr"> Theory marks</strong>
+				<strong class="s-attr"> Practical marks</strong>
+				<strong class="s-attr"> No. of midtests</strong>
+
+			</div>
+			<div class="right-content">
+				<input type="text" name="s_name" placeholder="Subject Name" class="fst">
+				<input type="text" name="no_of_lectures" placeholder="Tota no of lectures" class="s-input">
+				<input type="text" name="th_marks" placeholder="Theory marks" class="s-input">
+				<input type="text" name="prac_marks" placeholder="Practical marks" class="s-input">
+				<input type="text" name="no_of_midtests" placeholder="No of Midtest" class="s-input">
+			</div>
+			<div>
+				<button type="submit" name="add" value="new"  class="buttons" style="margin-left: 42%; margin-top:20px; height:40px;"> CREATE SUBJECT </button>
+			</div>
+		</div>
+
+	</form>
+
+	<div id="header">
+		<h2 style="color:#333"> AVAILABLE SUBJECTS </h2>
+	</div>
+	{% for sub in subject_data %}
+	<form method="post" action="/admin/createordeletesubject/">
+		{% csrf_token %}
+	<div id="form-content1">
+			<div class="left-content1">
+				<strong class="s-attr1"> Subject ID</strong>
+				<strong class="s-attr1"> Subject name</strong>
+				<strong class="s-attr1"> No of lectures</strong>
+				<strong class="s-attr1"> Theory marks</strong>
+				<strong class="s-attr1"> Practical marks</strong>
+				<strong class="s-attr1"> No of midtest</strong>
+				<strong class="s-attr1"> Total no of students</strong>
+
+			</div>
+			<div class="right-content1">
+				<div class="fst1">{{ sub.0 }}</div>
+				<div class="s-input1">{{ sub.1 }}</div>
+				<div class="s-input1">{{ sub.2 }}</div>
+				<div class="s-input1">{{ sub.3 }}</div>
+				<div class="s-input1">{{ sub.4 }}</div>
+				<div class="s-input1">{{ sub.6 }}</div>
+				<div class="s-input1">Total students</div>
+			</div>
+			<div>
+				<button type="submit" name="delete" value="{{ sub.0 }}" class="buttons" style="margin-left: 42%; margin-top:20px; height:40px;"> DELETE THIS SUBJECT </button>
+			</div>
+
+	</div>
+		</form>
+	{% endfor %}
+	
+
+
+{% endblock %}

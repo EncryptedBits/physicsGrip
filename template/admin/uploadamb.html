@@ -1,0 +1,52 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block pagetitle %}  UPLOADS | Physics Grip {% endblock %}
+
+{% block import %}
+
+	<link href="{% static 'CSS/admin/base.css' %}" rel="stylesheet">
+	<link href="{% static 'CSS/admin/createamb.css' %}" rel="stylesheet">
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jqueryui.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+{% endblock %}
+
+{% block write_js %}
+
+{% endblock  %}
+
+
+{% block main_content  %}
+	<div id="header">
+		<h2 style="color:#333"> UPLOAD AMBASSADORS </h2>
+	</div>
+	<form method="POST" action="/admin/uploadnewamb/" enctype="multipart/form-data">
+	{% csrf_token %}
+		<div id="form-content">
+			<div class="left-content">
+				<strong class="fst11"> Name </strong>
+				<strong class="s-attr"> Achievement</strong>
+				<strong class="s-attr"> Photo (Passport size)</strong>
+				<strong class="s-attr"> Description</strong>
+
+			</div>
+			<div class="right-content">
+				<input type="text" name="amb_name" placeholder="Name" class="fst">
+				<input type="text" name="achievement" placeholder="Achievement" class="s-input">
+				<input type="file" placeholder="Picture" name="amb_photo" class="s-input-addr" />
+				<textarea  name="amb_words" placeholder="Desciption" class="s-input-addr1" > </textarea>
+			</div>
+			<div>
+				<button type="submit" class="buttons" style="margin-left: 42%; margin-top:20px; height:40px;"> UPLOAD AMBASSADOR </button>
+			</div>
+		</div>
+
+	</form>
+	
+{% endblock %}
+
+
+

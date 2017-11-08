@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block pagetitle %}  Payment | Physics Grip {% endblock %}
+
+{% block import %}
+
+	<link href="{% static 'CSS/accounts/base.css' %}" rel="stylesheet">
+	<link href="{% static 'CSS/accounts/register.css' %}" rel="stylesheet">
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jqueryui.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+{% endblock %}
+
+{% block write_js %}
+	
+{% endblock  %}
+
+
+{% block main_content  %}
+
+	<div id="header">
+		<h2 style="color:#333"> PAYMENT </h2>
+	</div>
+	<div id="payment_box">
+		<form method="post" action="/accounts/paymentedregistration/">
+		{% csrf_token %}
+			<table>
+				<tr>
+					<td> <strong> COURSE : </strong> </td>
+					<td> {{ course }} </td>
+				</tr>
+
+				<tr>
+					<td> <strong> FEE : </strong> </td>
+					<td> {{ fee }} </td>
+				</tr>
+
+				<tr>
+					<td> <strong> CARD NO:  : </strong> </td>
+					<td> <input type="text" name="card_no"> </td>
+				</tr>
+
+				<tr>
+					<td> <strong> CVV NO:  : </strong> </td>
+					<td> <input type="password" name="cvv"> </td>
+				</tr>
+
+				<tr>
+					<td> <strong> OTP:  : </strong> </td>
+					<td> <input type="text" name="otp"> </td>
+				</tr>
+
+				<tr>
+					<td> <button type="submit" name="pay_mode" value="cancel"> CANCEL PAYMENT </button> </td>
+					<td> <button type="submit" name="pay_mode" value="pay"> CONFIRM PAYMENT </button> </td>
+				</tr>
+
+
+			</table>
+
+		</form>
+	</div>
+
+{% endblock %}
+

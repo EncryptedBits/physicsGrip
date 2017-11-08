@@ -1,0 +1,13 @@
+#header{
+	margin-top: 100px;
+	text-align: center;
+}
+
+#msg{
+	text-align: center;
+}
+
+#footer{
+	position: relative;
+	top: 183px; 
+}

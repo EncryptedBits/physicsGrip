@@ -1,0 +1,77 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block pagetitle %}  CREATE | Physics Grip {% endblock %}
+
+{% block import %}
+
+	<link href="{% static 'CSS/admin/base.css' %}" rel="stylesheet">
+	<link href="{% static 'CSS/admin/createsection.css' %}" rel="stylesheet">
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jqueryui.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+{% endblock %}
+
+{% block write_js %}
+
+{% endblock  %}
+
+
+{% block main_content  %}
+	<div id="header">
+		<h2 style="color:#333"> CREATE NEW SECTION </h2>
+	</div>
+	<form method="post" action="/admin/createordeletesection/">
+	{% csrf_token %}
+		<div id="form-content">
+			<div class="left-content">
+				<strong class="s-attr-f"> Section Name</strong>
+				<strong class="s-attr"> Class</strong>
+				<strong class="s-attr"> Current year</strong>
+			</div>
+			<div class="right-content">
+				<input type="text" name="sec_name" placeholder="Section Name" class="fst">
+				<input type="text" name="std" placeholder="Class" class="s-input">
+				<input type="text" name="curr_year" placeholder="Current year" class="s-input">
+			</div>
+			<div>
+				<button type="submit" name="add" value="{{ course }}" class="buttons" style="margin-left: 42%; margin-top:20px; height:40px;"> CREATE SECTION </button>
+			</div>
+		</div>
+
+	</form>
+	<div id="header">
+		<h2 style="color:#333">  SECTIONS OF THIS COURSE </h2>
+	</div>
+	{% for sec in sec_data %}
+	<form method="post" action="/admin/createordeletesection/">
+	{% csrf_token %}
+	<div id="form-content1">
+			<div class="left-content1">
+				<strong class="fst1"> Section ID</strong>
+				<strong class="s-attr1"> Section Name</strong>
+				<strong class="s-attr1"> Class</strong>
+				<strong class="s-attr1"> Current year</strong>
+				<strong class="s-attr1"> No. of students</strong>
+				<strong class="s-attr1"> Course ID</strong>
+			</div>
+			<div class="right-content1">
+				<div class="fst1">{{ sec.0 }}</div>
+				<div class="s-input1">{{ sec.1 }}</div>
+				<div class="s-input1">{{ sec.2 }}</div>
+				<div class="s-input1">{{ sec.3 }}</div>
+				<div class="s-input1"> No of students </div>
+				<div class="s-input1">{{ sec.5 }}</div>
+			</div>
+			
+			<button type="submit" name="delete" value="{{ sec.0 }}-{{ sec.5 }}" class="buttons" style="margin-top:10px; margin-left:43%;"> DELETE SECTION </button>
+				
+	</div>
+	</form>
+	{% endfor %}
+	
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block pagetitle %}  {{ title }} | Physics Grip {% endblock %}
+
+{% block import %}
+
+	
+	<link href="{% static 'CSS/accounts/base.css' %}" rel="stylesheet">
+	<link href="{% static 'CSS/errorpage.css' %}" rel="stylesheet">
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jqueryui.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+{% endblock %}
+
+{% block write_js %}
+	
+{% endblock  %}
+
+{% block main_content  %}
+
+
+	<div id="centermaker">
+		<div id="header">
+			<h2  style="color:#333"> {{ header }} </h2>
+		</div>
+
+		<div id="msg">
+			<h2> {{ msg }} </h2>
+		</div>
+
+	</div>
+
+{% endblock %}
+
+

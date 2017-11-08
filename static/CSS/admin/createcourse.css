@@ -1,0 +1,163 @@
+
+#form-content{
+	width: 70%;
+	height: 570px;
+	margin: 20px auto;
+	padding: 20px 0px;
+	background-color: #c0c0c0;
+	box-shadow: 0px 0px 2px 2px #666666;
+	border: 1px solid black;
+}
+
+#header{
+	text-align: center;
+	font-family: purisa;
+}
+
+.left-content{
+	height: 500px;
+	width: 35%; 
+	float: left;
+	text-align: right;
+	border-right: 1px solid black;
+}
+.right-content{
+	height: 500px;
+	width: 64%; 
+	float: right;
+	text-align: left;
+}
+
+.s-attr{
+	display: block;
+	margin: 40px 30px;
+}
+
+.fst{
+	display: block;
+	margin-top: 35px;
+	margin-left: 30px;
+	width: 75%;
+	height: 25px;
+	border-radius: 10px;
+	padding: 2px 10px;
+	background-color: #808080;
+}
+
+.s-input{
+	display: block;
+	margin: 26px 30px;
+	width: 75%;
+	height: 25px;
+	border-radius: 10px;
+	padding: 2px 10px;
+	background-color: #808080;
+}
+
+.s-input2{
+	display: block;
+	margin: 26px 30px;
+	width: 75%;
+	height: 40px;
+	border-radius: 10px;
+	padding: 2px 10px;
+	background-color: #808080;
+}
+
+.s-input-addr{
+	display: block;
+	margin: 25px 30px;
+	width: 75%;
+	height: 50px;
+	border-radius: 10px;
+	padding: 2px 10px;
+	background-color: #808080;
+	overflow: hidden;
+}
+
+#reset-btn{
+	margin-left: 35%;
+}
+
+.sel{
+	margin: 0px 5px;
+	width: 50px;
+}
+
+.buttons{
+	margin: 0px 10px;
+	height: 30px;
+	border-radius: 10px;
+	padding: 5px 10px;
+}
+
+#footer-reg{
+	height: 180px;
+	background-color: #111;
+	margin-top: 20px;
+}
+
+.buttons:hover{
+	background-color: #2f4f4f;
+	cursor: pointer;
+}
+
+#form-content1{
+	width: 70%;
+	height: 320px;
+	margin: 20px auto;
+	padding: 20px 0px;
+	background-color: #c0c0c0;
+	box-shadow: 0px 0px 2px 2px #666666;
+	border: 1px solid black;
+}
+
+.left-content1{
+	height: 280px;
+	width: 50%; 
+	float: left;
+	text-align: right;
+	border-right: 1px solid black;
+}
+
+.right-content1{
+	height: 280px;
+	width: 49%; 
+	float: right;
+	text-align: left;
+}
+
+.s-attr1{
+	display: block;
+	margin: 10px 30px;
+}
+
+.fst1{
+	display: block;
+	margin-top: 10px;
+	margin-left: 30px;
+	width: 75%;
+	height: 25px;
+	border-radius: 10px;
+}
+
+.s-input1{
+	display: block;
+	margin: 8px 30px;
+	width: 75%;
+	height: 20px;
+}
+
+#curr_sec{
+	height: 30px;
+	border-top: 1px solid black;
+	position: relative;
+	top: 290px;
+	padding-left: 20px;
+}
+
+#txt{
+	position: relative;
+	top: -272px;
+}
+

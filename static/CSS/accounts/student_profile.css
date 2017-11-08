@@ -1,0 +1,96 @@
+#rel_container{
+	position: relative;
+	top: 80px;
+}
+
+#header{
+	text-align: center;
+	font-family:  purisa; URW chancery L;
+}
+
+#stud-details{
+	position: relative;
+	width: 62%;
+	height: 580px;
+	margin: 20px auto;
+	padding: 40px 40px;
+	background-color: #c0c0c0;
+	box-shadow: 0px 0px 2px 2px #666666;
+	border: 1px solid black;
+}
+
+#profile_pic{
+	height: 200px;
+	width: 160px;
+	margin-left: 150px;
+	padding: 10px;
+	background-color: #dcdcdc;
+	box-shadow: 0px 0px 2px 2px #666666;
+	float: left;
+}
+
+#inner-dp{
+	height: 100%;
+	width: 100%;
+	border: 1px solid black;
+
+}
+
+#imp-info{
+	height: 200px;
+	width: 45%;
+	float: right;
+	padding-left: 50px;
+	padding-top: 20px; 
+	border-left: 1px solid black;
+}
+
+.ii{
+	margin-top: 16px;
+	font-size: 20px;
+}
+
+.inline-class{
+	display: inline;
+}
+
+#other-info{
+	position: absolute;
+	top: 300px;
+	width: 82%;
+	height: 250px;
+	padding: 40px; 
+	border-top: 1px solid black;
+}
+
+.oi-l{
+	height: 240px;
+	width: 47%;
+	padding-right: 2%;
+	float: left;
+	text-align: right;
+}
+
+.oi-r{
+	height: 240px;
+	width: 49%;
+	float: right;
+	text-align: left;
+	padding-left: 1%;
+}
+
+.oi-ele{
+	margin-bottom: 25px;
+}
+
+.oi-val{
+	margin-bottom: 25px;
+}
+
+#footer-reg{
+	height: 180px;
+	background-color: #111;
+	margin-top: 20px;
+}
+
+

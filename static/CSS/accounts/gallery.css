@@ -1,0 +1,75 @@
+#rel_container{
+	position: relative;
+	top: 80px;
+}
+
+#galley_box{
+	width: 100%;
+}
+
+#header{
+	text-align: center;
+	font-family:  purisa;
+}
+
+.image_card{
+	display: inline-block;
+	margin: 20px;
+	padding: 10px;
+	height: 290px;
+	width: 250px;
+	box-shadow: 0px 0px 2px 2px #666666;
+	background-color: white;
+	cursor: pointer;
+	-ms-transform: rotate(5deg); /* IE 9 */
+    -webkit-transform: rotate(5deg); /* Chrome, Safari, Opera */
+    transform: rotate(5deg);
+    transition-property : transform;
+    transition-duration:1s;
+}
+
+.image_card:hover{
+	-ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+    z-index: 1;
+}
+
+
+
+.image_card_heading{
+	font-family: purisa;
+	font-size: 15px;
+}
+
+.image_card_date{
+	font-family: purisa;
+	font-size: 10px;
+}
+
+.image_card_image{
+	height: 220px;
+}
+
+.image{
+	height: 220px;
+	width: 247px;
+	border: 1px solid black;
+
+}
+
+.image_card_discription{
+	font-family: purisa;
+	font-size: 10px;
+}
+
+
+.ic{
+	
+}
+
+#footer{
+	width: 100%;
+	height: 180px;
+	background-color: #000000;
+}

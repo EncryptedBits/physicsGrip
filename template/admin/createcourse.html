@@ -1,0 +1,150 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block pagetitle %}  CREATE | Physics Grip {% endblock %}
+
+{% block import %}
+
+	<link href="{% static 'CSS/admin/base.css' %}" rel="stylesheet">
+	<link href="{% static 'CSS/admin/createcourse.css' %}" rel="stylesheet">
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jqueryui.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+{% endblock %}
+
+{% block write_js %}
+
+{% endblock  %}
+
+
+{% block main_content  %}
+
+	<div id="header">
+		<h2 style="color:#333;"> CREATE NEW COURSE </h2>
+	</div>
+	<form method="post" action="/admin/addnewcourse/">
+	{% csrf_token %}
+		<div id="form-content">
+		
+			<div class="left-content">
+				<strong class="s-attr"> Course Name</strong>
+				<strong class="s-attr"> Fee</strong>
+				<strong class="s-attr"> Pre requisite</strong>
+				<strong class="s-attr"> Addmission beg. Date</strong>
+				<strong class="s-attr"> Addmission end Date</strong>
+				<strong class="s-attr"> Course beg. Date</strong>
+				<strong class="s-attr"> Course end Date</strong>
+				<strong class="s-attr"> Subjects </strong>
+
+			</div>
+			<div class="right-content">
+				<input type="text" name="c_name" placeholder="Course Name" class="fst">
+				<input type="text" name="fee" placeholder="Fee (in Rs)" class="s-input">
+				<input type="text" name="pre_req" placeholder="Pre requisite" class="s-input">
+				<input type="text" name="adm_beg" placeholder="Beginning date (YYYY-MM-DD)" class="s-input">
+				<input type="text" name="adm_end" placeholder="End date (YYYY-MM-DD)" class="s-input">
+				<input type="text" name="c_beg" placeholder="Beginning date (YYYY-MM-DD)" class="s-input">
+				<input type="text" name="c_end" placeholder="End date (YYYY-MM-DD)" class="s-input">
+				<div class="s-input">
+					<select name="sub1" class="sel">
+						<option value="not_selected"> Select </option>
+						{% for sub in subjects %}
+						<option value="{{ sub.0 }}"> {{ sub.1 }} </option>
+						{% endfor %}
+					</select>
+					<select name="sub2" class="sel">
+						<option value="not_selected"> Select </option>
+						{% for sub in subjects %}
+						<option value="{{ sub.0 }}"> {{ sub.1 }} </option>
+						{% endfor %}
+					</select>
+					<select name="sub3" class="sel">
+						<option value="not_selected"> Select </option>
+						{% for sub in subjects %}
+						<option value="{{ sub.0 }}"> {{ sub.1 }} </option>
+						{% endfor %}
+					</select>
+					<select name="sub4" class="sel">
+						<option value="not_selected"> Select </option>
+						{% for sub in subjects %}
+						<option value="{{ sub.0 }}"> {{ sub.1 }} </option>
+						{% endfor %}
+					</select>
+					<select name="sub5" class="sel">
+						<option value="not_selected"> Select </option>
+						{% for sub in subjects %}
+						<option value="{{ sub.0 }}"> {{ sub.1 }} </option>
+						{% endfor %}
+					</select>
+					<select name="sub6" class="sel">
+						<option value="not_selected"> Select </option>
+						{% for sub in subjects %}
+						<option value="{{ sub.0 }}"> {{ sub.1 }} </option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div>
+				<button type="submit" class="buttons" style="margin-left: 42%; margin-top:20px; height:40px;"> CREATE COURSE </button>
+			</div>
+
+		</div>
+		<div id="header">
+		<h2 style="color:#333"> AVAILABLE COURSES </h2>
+		</div>
+	</form>
+	{% for coursec in course_sec %}
+	<form action="/admin/processcourse/" method="post">
+		{% csrf_token %}
+	<div id="form-content1">
+			<div class="left-content1">
+				<strong class="s-attr1"> Course Name</strong>
+				<strong class="s-attr1"> Fee</strong>
+				<strong class="s-attr1"> Pre requisite</strong>
+				<strong class="s-attr1"> Addmission beg. Date</strong>
+				<strong class="s-attr1"> Addmission end Date</strong>
+				<strong class="s-attr1"> Course beg. Date</strong>
+				<strong class="s-attr1"> Course end Date</strong>
+				<strong class="s-attr1"> Subjects </strong>
+				<strong class="s-attr1"> Total no. of students </strong>
+
+			</div>
+			<div class="right-content1">
+				<div class="fst1">{{coursec.0.0}}</div>
+				<div class="s-input1">{{coursec.0.1}} </div>
+				<div class="s-input1">{{coursec.0.3}}</div>
+				<div class="s-input1">{{coursec.0.6}}</div>
+				<div class="s-input1">{{coursec.0.7}}</div>
+				<div class="s-input1">{{coursec.0.4}}</div>
+				<div class="s-input1">{{coursec.0.5}}</div>
+				<div class="s-input1">sub1, sub2, sub3</div>
+				<div class="s-input1">{{coursec.0.2}}</div>
+			</div>
+			<div id="curr_sec">
+				
+				<div id="txt">
+					<strong> Curr. Addm. section:</strong>{% if coursec.0.8 %} {{coursec.0.8}} {% else %} NA {% endif %} |
+					  &nbsp
+					 <strong> Change current section? </strong>
+					 <select name="new_curr_sec">
+					 	{% for sec in coursec.1 %}
+					 		<option value="{{ sec.0 }}"> {{ sec.1 }} </option>
+					 	{% endfor %}
+					 </select> 
+					 <button type="submit" name="submit1" class="buttons" value="{{ coursec.0.9 }}"> CHANGE </button>
+					 <button type="submit" name="submit2" class="buttons" value="{{ coursec.0.9 }}"> DELETE COURSE</button>
+					<button type="submit" name="submit3" class="buttons" value="{{ coursec.0.9 }}"> SECTIONS </button>
+
+				</div>
+			
+			</div>
+	</div>
+	</form>
+	{% endfor %}
+	
+
+
+{% endblock %}

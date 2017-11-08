@@ -1,0 +1,132 @@
+#header{
+	text-align: center;
+	font-family:  purisa; URW chancery L;
+}
+
+
+.buttons{
+	margin-top: 10px;
+	margin-left: 40%;
+	height: 30px;
+	border-radius: 10px;
+	padding: 5px 10px;
+
+
+}
+
+#footer-reg{
+	height: 180px;
+	background-color: #111;
+	margin-top: 20px;
+}
+
+.buttons:hover{
+	background-color: #2f4f4f;
+	cursor: pointer;
+}
+
+#form-content1{
+	width: 70%;
+	height: 120px;
+	margin: 0px auto;
+	margin-top: 0px;
+	padding: 20px 0px;
+	background-color: #c0c0c0;
+	box-shadow: 0px 0px 2px 2px #666666;
+	border: 1px solid black;
+}
+
+.left-content1{
+	height: 120px;
+	width: 50%; 
+	float: left;
+	text-align: right;
+	border-right: 1px solid black;
+}
+
+.right-content1{
+	height: 120px;
+	width: 49%; 
+	float: right;
+	text-align: left;
+}
+
+.s-attr1{
+	display: block;
+	margin: 10px 30px;
+}
+
+.fst1{
+	display: block;
+	margin-top: 10px;
+	margin-left: 30px;
+	width: 75%;
+	height: 25px;
+	border-radius: 10px;
+}
+
+.s-input1{
+	display: block;
+	margin: 8px 30px;
+	width: 75%;
+	height: 20px;
+}
+
+#recent_reg{
+	width: 67%;
+	margin: 0px auto;
+	padding: 20px 20px;
+	background-color: #c0c0c0;
+	box-shadow: 0px 0px 2px 2px #666666;
+	border: 1px solid black;
+}
+
+input[class=sub] {
+  background: none;
+  border: none;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  font-size: 20px;
+  color: blue;
+}
+
+.search_res{
+	display: inline-block;
+	width: 377px;
+	margin: 5px 15px;
+	height: 100px;
+	padding: 10px;
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: -0px 0px 2px #666666;
+}
+
+.search_img{
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin-right: 10px;
+	background-color: yellow;
+}
+
+.card_name{
+	margin-top: 7px;
+}
+
+.cb{
+
+}
+
+#due_reg{
+	width: 67%;
+	margin: 0px auto;
+	padding: 20px 20px;
+	background-color: #c0c0c0;
+	box-shadow: 0px 0px 2px 2px #666666;
+	border: 1px solid black;
+}
+
+
+

@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html>
+{% load static %}
+<head>
+	<title> {% block pagetitle %} Home | Physics Grip {% endblock %} </title>
+	<link rel="icon" href="./IMAGES/pic1.png" type="image/png" >
+	<meta charset="utf-8">
+
+	{% block import %}
+
+	{% endblock  %}
+
+
+<script type="text/javascript" language="javascript">
+
+	$(document).ready(function(){
+		//console.log($(".nav_dropdown").eq(2));
+		var idx = $('')
+		$('.nav_o3').mouseenter(function(){
+			$('.nav_dropdown3').slideDown('slow')
+		});
+		$('.nav_o3').mouseleave(function(){
+			$('.nav_dropdown3').slideUp(100);
+		});
+		$('.nav_o4').mouseenter(function(){
+			$('.nav_dropdown4').slideDown('slow')
+		});
+		$('.nav_o4').mouseleave(function(){
+			$('.nav_dropdown4').slideUp(100);
+		});
+	});
+
+	$(document).ready(function() {
+		$('#signIn').click(function(){
+			$('.login_in').val('');
+			$('#login_window').show('drop',{direction: 'up'}, 500);
+			$('#login_window').effect( "bounce", {times:7}, 1000 );
+		});
+	});
+
+	$(document).ready(function(){
+		$('#login_sub').click(function(){
+			$('#login_window').hide('drop', {direction : "up"}, 500);
+		});
+	});
+
+	$(document).ready(function(){
+		$('#cut-img').click(function(){
+			$('#login_window').hide('drop', {direction : "up"}, 500);
+		});
+	});
+
+	$(document).ready(function(){
+		$('#show_pswd').change(function(){
+			if(this.checked){
+				$('#sec').attr('type','text');
+			}
+			else{
+				$('#sec').attr('type','password');
+			}
+		});
+	});
+
+
+	{% block write_js %}
+
+	{% endblock  %}
+
+</script>
+
+</head>
+
+<body >
+	<div id="main_header" style="position:fixed;">
+		<div class="header-text-large"><h1> PHYSICS GRIP </h1></div>
+		<div class="header-text-small"> <sub> WHERE EXELLENCE IS A ROUTINE</sub> </div>
+	</div>
+	<div id="rel_container">
+	<div id="nav_bar">
+		<div class="nav_o nav_o2">
+			<div class="nav_oh">
+				<a href="/admin/" style="text-decoration:none; color:white;"><i class="fa fa-info" style="font-size:18px;color:white"></i> &nbsp <strong> DATA </strong></a>
+			</div>
+		</div><!--
+		<div class="nav_o nav_o3">
+			<div class="nav_oh">
+				<a href="/gallery/" style="text-decoration:none; color:white;"><i class="fa fa-camera-retro" style="font-size:18px;color:white"></i>
+<strong> GALLERY </strong></a>
+			</div>
+		</div>-->
+		<div class="nav_o nav_o3">
+			<div class="nav_oh">
+				<i class="fa fa-upload" style="font-size:18px;color:white"></i><strong> UPLOAD </strong>
+			</div>
+			<div class="nav_dropdown nav_dropdown3">
+				<ul>
+					<a href="/admin/gallery/" style="text-decoration:none; color:white;"><li><i class="fa fa-camera-retro" style="font-size:18px;color:whte"></i>&nbsp&nbsp&nbsp GALLERY </li> </a>
+					<a href="/admin/ambassador/" style="text-decoration:none; color:white;"><li><i class="fa fa-user-circle-o" style="font-size:18px;color:whte"></i>&nbsp&nbsp&nbsp AMBASSADOR </li> </a>
+				</ul>
+			</div>
+		</div>
+		<div class="nav_o nav_o4">
+			<div class="nav_oh">
+				<i class="fa fa-tags" style="font-size:18px;color:white"></i><strong> CREATE </strong>
+			</div>
+			<div class="nav_dropdown nav_dropdown4">
+				<ul>
+					<a href="/admin/course/" style="text-decoration:none; color:white;"><li><i class="fa fa-mortar-board" style="font-size:18px;color:whte"></i>&nbsp&nbsp&nbsp COURSE </li> </a>
+					<a href="/admin/subject/" style="text-decoration:none; color:white;"><li><i class="fa fa-book" style="font-size:18px;color:whte"></i>&nbsp&nbsp&nbsp SUBJECT </li> </a>
+				</ul>
+			</div>
+		</div>
+		<div class="nav_o nav_o6">
+			<div class="nav_oh">
+				<a href="/admin/search/" style="text-decoration:none; color:white;"><i class="fa fa-edit" style="font-size:18px;color:white"></i> <strong> SEARCH </strong></a>
+			</div>
+		</div>
+		<div class="nav_o nav_o5">
+			<div class="nav_oh">
+				<a href="/accounts/logout/" id="signOut" style="text-decoration:none; color:white;"><i class="fa fa-sign-out" style="font-size:18px;color:white"></i>&nbsp&nbsp signOut</a>
+			</div>
+		</div>
+	</div>
+
+
+
+	{% block main_content  %}
+
+
+
+	{% endblock  %}
+
+	<div id="login_window">
+		<form method="POST" action="/accounts/login/">
+
+		<h2 class="cross">LOGIN</h2> <img src="{% static 'IMAGE/accounts/cut.png' %}" class="cross pointer" id="cut-img" height="30px" width="30px">
+		<input type="text" name="user_name" placeholder="Roll No." class="login_in"/>
+		<input type="password" name="pswd" placeholder="Password" class="login_in" id="sec"/>
+		<sub><label><input type="checkbox"/ id="show_pswd"> Show password </label><sub>
+		<br />
+		<input type="submit" name="submit" value="LOGIN" id="login_sub" class="pointer" />
+		</form>
+	</div>
+	<div id="footer">
+		<div id="footer_left">
+			<strong>CONTACT US &nbsp &nbsp &nbsp &nbsp   </strong> <br /> <br />
+			<span style="font-size:15px;"> 9986547502 7546802450 </span> &nbsp &nbsp<i class="fa fa-fax" style="font-size:15px;color:red"></i>  <br />
+			<span style="font-size:15px;">ykgupta@gmail.com </span>&nbsp <i class="fa fa-envelope-open" style="font-size:15px;color:red"></i> <br/>
+			<span style="font-size:15px;">fb.com/YK Gupta  </span> &nbsp <i class="fa fa-globe" style="font-size:18px;color:red"></i>
+			<br>
+		</div>
+
+		<div id="footer_right">
+			<strong>&nbsp &nbsp &nbsp &nbsp &nbsp  CONTACT US   </strong> <br /> <br />
+			<span style="font-size:15px;">&nbsp <i class="fa fa-fax" style="font-size:15px;color:red"></i> &nbsp  9986547502 7546802450 </span>   <br />
+			<span style="font-size:15px;">&nbsp <i class="fa fa-envelope-open" style="font-size:15px;color:red"></i> &nbsp ykgupta@gmail.com </span>  <br/>
+			<span style="font-size:15px;">&nbsp <i class="fa fa-globe" style="font-size:18px;color:red"></i> &nbsp fb.com/YK Gupta  </span>
+			<br>
+		</div>
+
+
+		<div id="footer_buttom">
+			<br />
+			&copy PHYSICS GRIP 2017 <br />
+			<span style="font-size:12px;"> NKG DEVELOPMENTS </span>
+		</div>
+
+	</div>
+	</div>
+
+</body>
+
+</html>

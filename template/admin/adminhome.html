@@ -1,0 +1,93 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block pagetitle %}  CREATE | Physics Grip {% endblock %}
+
+{% block import %}
+
+	<link href="{% static 'CSS/admin/base.css' %}" rel="stylesheet">
+	<link href="{% static 'CSS/admin/adminhome.css' %}" rel="stylesheet">
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jqueryui.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+{% endblock %}
+
+{% block write_js %}
+
+{% endblock  %}
+
+
+{% block main_content  %}
+	<div id="header">
+		<h2 style="color:#333"> STATS AT GLANCE </h2>
+	</div>
+	<div id="form-content1">
+			<div class="left-content1">
+				<strong class="s-attr1"> Total no. of couses  </strong>
+				<strong class="s-attr1"> Total no. of sections  </strong>
+				<strong class="s-attr1"> Total no. of students </strong>
+				<strong class="s-attr1"> Total due amount</strong>
+			</div>
+
+			<div class="right-content1">
+				<div class="fst1"> {{ no_of_courses }} </div>
+				<div class="s-input1"> {{ no_of_sections }} </div>
+				<div class="s-input1"> {{ no_of_students }} </div>
+				<div class="s-input1"> {{ total_due }} </div>
+			</div>
+	</div>
+
+	<div id="header">
+		<h2 style="color:#333"> RECENT REGISTRATIONS </h2>
+	</div>
+
+	<form method="POST" action="/admin/requeststudentordeletedue/" >
+	<div id="recent_reg">
+		{% csrf_token %}
+		{% for stud in reg_data %}
+			<div class="search_res">
+					<div class="search_img">
+						<img src="{{ stud.3 }}" width="100px" height="100px" alt="student_pic">
+					</div>
+					<div class="stud_info">
+						<span style="font-size:20px;"><strong>{{ stud.0 }} {{ stud.1 }}</strong></span> 
+						<br/> 
+						<div class="card_name"><span style="font-size:20px;"><strong><input type="submit" class="sub" name="submt" value="Roll No : {{stud.2 }}"></strong></span></div>
+						<div class="card_name"><strong> Course ID : {{ stud.4 }}</strong></div>
+					</div>
+			</div>
+		{% endfor %}
+	</div>
+	</form>
+
+	<div id="header">
+		<h2 style="color:#333"> PAID DUE REGISTRATIONS </h2>
+	</div>
+
+	<form method="POST" action="/admin/requeststudentordeletedue/" >
+	{% csrf_token %}
+	<div id="due_reg">
+			{% for stud in due_data %}
+				<div class="search_res">
+					<label style="float:right;">  <input type="checkbox" name="{{ stud.2 }}" value="{{ stud.2 }}" class="cb"> Paid student</label>
+					<div class="search_img">
+						<img src="{{ stud.3 }}" width="100px" height="100px" alt="student_pic">
+					</div>
+					<div class="stud_info">
+						<span style="font-size:20px;"><strong>{{ stud.0 }} {{ stud.1 }}</strong></span> 
+						<br/> 
+						<div class="card_name"><span style="font-size:20px;"><strong><input type="submit" class="sub" name="submt" value="Roll No : {{stud.2 }}"></strong></span></div>
+						<div class="card_name"><strong> Course ID : {{ stud.4 }}</strong></div>
+					</div>
+				</div>
+			{% endfor %}
+			
+			<hr/>
+			<button class="buttons" type="submit" name="submt" value="delete"> CLEAR PAID STUDENTS </button>
+	</div>
+	</form>
+
+
+{% endblock %}

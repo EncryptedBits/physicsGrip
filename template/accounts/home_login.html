@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html>
+{% load static %}
+<head>
+	<title> Home | Physics Grip </title>
+	<link rel="icon" href="{% static  './IMAGES/accounts/pic1.png' %}" type="image/png" >
+	<meta charset="utf-8">
+	<link href="{% static './CSS/accounts/home.css' %}" rel="stylesheet">
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jqueryui.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script type="text/javascript" language="javascript">
+
+	var currSlideIndex = 0;
+	var nxtSlideIndex = 1;
+	function showSlides() {
+    //var i;
+    var slides = document.getElementsByClassName("show_images");
+    var slidesQ = $('.show_images');
+    //for (i = 0; i < slides.length; i++) {
+    //    slides[i].style.display = "none";
+    //}
+    if (currSlideIndex>= slides.length) {currSlideIndex = 0}
+    if (nxtSlideIndex>= slides.length) {nxtSlideIndex = 0}
+    //slidesQ.eq(currSlideIndex).attr('z-index','-1');
+	//slidesQ.eq(nxtSlideIndex).attr('z-index','1');
+    //slidesQ.eq(currSlideIndex).hide( "blind", {direction: "horizontal"}, 1);
+    slidesQ.eq(currSlideIndex).fadeOut(100);
+    //slidesQ.eq(nxtSlideIndex).show( "blind", {direction: "horizontal"}, 1000 );
+    slidesQ.eq(nxtSlideIndex).fadeIn(100);
+    //slides[slideIndex-1].style.display = "block";
+    console.log(currSlideIndex)
+    console.log(nxtSlideIndex)
+    nxtSlideIndex++;
+    currSlideIndex++;
+    setTimeout(showSlides, 3000);
+	}
+
+	$(document).ready(function(){
+		//console.log($(".nav_dropdown").eq(2));
+		var idx = $('')
+		$('.nav_o4').mouseenter(function(){
+			$('.nav_dropdown4').slideDown('slow')
+		});
+		$('.nav_o4').mouseleave(function(){
+			$('.nav_dropdown4').slideUp(100);
+		});
+		$('.nav_o5').mouseenter(function(){
+			$('.nav_dropdown5').slideDown('slow')
+		});
+		$('.nav_o5').mouseleave(function(){
+			$('.nav_dropdown5').slideUp('fast')
+		});
+	});
+
+	$(document).ready(function() {
+		$('#signIn').click(function(){
+			$('.login_in').val('');
+			$('#login_window').show('drop',{direction: 'up'}, 500);
+			$('#login_window').effect( "bounce", {times:7}, 1000 );
+		});
+	});
+
+	$(document).ready(function(){
+		$('#login_sub').click(function(){
+			$('#login_window').hide('drop', {direction : "up"}, 500);
+		});
+	});
+
+	$(document).ready(function(){
+		$('#cut-img').click(function(){
+			$('#login_window').hide('drop', {direction : "up"}, 500);
+		});
+	});
+
+	$(document).ready(function(){
+		$('#show_pswd').change(function(){
+			if(this.checked){
+				$('#sec').attr('type','text');
+			}
+			else{
+				$('#sec').attr('type','password');
+			}
+		});
+	});
+
+	$(function() {
+		$('#accordion1').accordion({heightStyle: "content",
+			fillSpace: true});
+		$('#accordion2').accordion({heightStyle: "content",
+			disabled : false});
+	});
+
+/*	function highlight(){
+		var heder = document.getElementsByClassName("ui-accordion-header-active");
+		for(var i = 0; i< heder.length; i++){
+			heder[i].className += " highLiteHeder";
+		}
+	}
+
+	$(document).ready({
+		var heder = $('.accord_title');
+		console.log(heder.length);
+		//var acrd_ttl = $('.accord_title');
+		for(var i = 0; i< heder.length; i++){
+			if(heder[i].hasClass('ui-state-active')){
+				heder[i].addClass('highLiteHeder');
+			}
+		}
+	});
+*/
+</script>
+
+</head>
+
+<body onload="showSlides()">
+	<div id="main_header">
+		<div class="header-text-large"><h1> PHYSICS GRIP </h1></div>
+		<div class="header-text-small"> <sub> WHERE EXELLENCE IS A ROUTINE</sub> </div>
+	</div>
+	<div id="nav_bar">
+		<div class="nav_o nav_o1" id="first_nav">
+			<div class="nav_oh" >
+				 <a href="/" style="text-decoration:none; color:white;"><i class="fa fa-home" style="font-size:15px;color:white"></i>  <strong> HOME</strong> </a>
+			</div>
+		</div>
+		<div class="nav_o nav_o2">
+			<div class="nav_oh">
+				<a href="/gallery">
+				<a href="/courses/" style="text-decoration:none; color:white;"><i class="fa fa-mortar-board" style="font-size:15px;color:white"></i><strong> COURSES</strong> </a>
+				</a>
+			</div>
+		</div>
+
+		<div class="nav_o nav_o3">
+			<div class="nav_oh">
+				<a href="/gallery/" style="text-decoration:none; color:white;"><i class="fa fa-camera-retro" style="font-size:15px;color:white"></i>
+<strong> GALLERY </strong></a>
+			</div>
+		</div>
+		<div class="nav_o nav_o4">
+			<div class="nav_oh">
+				<i class="fa fa-tags" style="font-size:15px;color:white"></i><strong> ABOUT US </strong>
+			</div>
+			<div class="nav_dropdown nav_dropdown4">
+				<ul>
+					<li> <i class="fa fa-balance-scale" style="font-size:18px;color:white"></i>&nbsp&nbsp PREV. RESULTS </li>
+					<a href="/ambassadors/" style="text-decoration:none; color:white;"><li><i class="fa fa-user-circle-o" style="font-size:18px;color:white"></i>&nbsp&nbsp&nbsp OUR AMBASSADORS </li> </a>
+					<li> <i class="fa fa-handshake-o" style="font-size:18px;color:white"></i>&nbsp&nbsp CONTACT US </li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="nav_o nav_o5">
+			<div class="nav_oh">
+				<a href="/accounts/logout/" id="signOut" style="text-decoration:none; color:white;"><i class="fa fa-sign-out" style="font-size:18px;color:white"></i>&nbsp&nbsp signOut</a>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div id="slide_show" background="/home/semicolon/Pictures/Wallpapers/joker_1.jpg" alternate="slideingImage">
+		<div class="show_images">
+			<img src="{% static './IMAGE/accounts/pic1.png' %}" alt="slideshow image"  height="500px" width="100%">
+		</div>
+
+		<div class="show_images">
+			<img src="{% static './IMAGE/accounts/pic2.jpg' %}" alt="slideshow image"  height="500px" width="100%">
+		</div>
+		<div class="show_images">
+			<img src="{% static './IMAGE/accounts/pic3.jpg' %}" alt="slideshow image" height="500px" width="100%">
+		</div>
+	</div>
+
+	<div id="side_bar">
+		<br />
+		<h3> &nbspMr. Yogesh Kr. Gupta </h3> <br /> <hr />
+
+		<div id="accordion1">
+			<h3 class="accord_title">Tab 1</h3>
+			<div class="accord_content">
+				<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				sed do eiusmod tempor incididunt ut labore et dolore magna
+				aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+				ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				sed do eiusmod tempor incididunt ut labore et dolore magna
+				Lorem ipsum dolor sit
+				</p>
+			</div>
+			<h3 class="accord_title">Tab 2</h3>
+			<div class="accord_content">
+				<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				sed do eiusmod tempor incididunt ut labore et dolore magna
+				aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+				ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				</p>
+			</div>
+			<h3 class="accord_title">Tab 3</h3>
+			<div class="accord_content">
+				<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				sed do eiusmod tempor incididunt ut labore et dolore magna
+				aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+				ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				</p>
+				<ul>
+					<li>List item one</li>
+					<li>List item two</li>
+					<li>List item three</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	<div id="centre_content">
+		<div class="marq">
+			<marquee> The coaching will be closed on the occassion of Durga pooja for 10 days. </marquee>
+		</div>
+
+		<div class="content">
+			<div id="content-heading">
+				<h3 id="content-heading-text"> CONTENT HEADING </h3>
+			</div>
+
+			<div id="content-content">
+			</div>
+
+		</div>
+	</div>
+
+	<div id="side_bar_right">
+		<br />
+		<h3> &nbsp Institute's Glance &nbsp </h3> <br /> <hr />
+
+		<div id="accordion2">
+			<h3 class="accord_title">Tab 1</h3>
+			<div class="accord_content">
+				<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				sed do eiusmod tempor incididunt ut labore et dolore magna
+				aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+				ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				consequat.
+				</p>
+			</div>
+			<h3 class="accord_title">Tab 2</h3>
+			<div class="accord_content">
+				<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				sed do eiusmod tempor incididunt ut labore et dolore magna
+				aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+				ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				</p>
+			</div>
+			<h3 class="accord_title">Tab 3</h3>
+			<div class="accord_content">
+				<p >
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				sed do eiusmod tempor incididunt ut labore et dolore magna
+				aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+				ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				</p>
+				<ul>
+					<li>List item one</li>
+					<li>List item two</li>
+					<li>List item three</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div id="login_window">
+		<h2 class="cross">LOGIN</h2> <img src="{% static './IMAGE/accounts/cut.png' %}" class="cross pointer" id="cut-img" height="30px" width="30px">
+		<input type="text" name="user_name" placeholder="Roll No." class="login_in"/>
+		<input type="password" name="pswd" placeholder="Password" class="login_in" id="sec"/>
+		<sub><label><input type="checkbox"/ id="show_pswd"> Show password </label><sub>
+		<br />
+		<input type="submit" name="submit" value="LOGIN" id="login_sub" class="pointer" />
+	</div>
+	<div id="footer">
+		<div id="footer_left">
+			<strong>CONTACT US &nbsp &nbsp &nbsp &nbsp   </strong> <br /> <br />
+			<span style="font-size:15px;"> 9986547502 7546802450 </span> &nbsp &nbsp<i class="fa fa-fax" style="font-size:15px;color:red"></i>  <br />
+			<span style="font-size:15px;">ykgupta@gmail.com </span>&nbsp <i class="fa fa-envelope-open" style="font-size:15px;color:red"></i> <br/>
+			<span style="font-size:15px;">fb.com/YK Gupta  </span> &nbsp <i class="fa fa-globe" style="font-size:18px;color:red"></i>
+			<br>
+		</div>
+
+		<div id="footer_right">
+			<strong>&nbsp &nbsp &nbsp &nbsp &nbsp  CONTACT US   </strong> <br /> <br />
+			<span style="font-size:15px;">&nbsp <i class="fa fa-fax" style="font-size:15px;color:red"></i> &nbsp  9986547502 7546802450 </span>   <br />
+			<span style="font-size:15px;">&nbsp <i class="fa fa-envelope-open" style="font-size:15px;color:red"></i> &nbsp ykgupta@gmail.com </span>  <br/>
+			<span style="font-size:15px;">&nbsp <i class="fa fa-globe" style="font-size:18px;color:red"></i> &nbsp fb.com/YK Gupta  </span>
+			<br>
+		</div>
+
+
+		<div id="footer_buttom">
+			<br />
+			&copy PHYSICS GRIP 2017 <br />
+			<span style="font-size:12px;"> NKG DEVELOPMENTS </span>
+		</div>
+
+	</div>
+
+</body>
+
+</html>

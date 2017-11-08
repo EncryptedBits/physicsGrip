@@ -1,0 +1,72 @@
+{% extends extend_page %}
+
+{% load static %}
+
+{% block pagetitle %}  Register | Physics Grip {% endblock %}
+
+{% block import %}
+
+	<link href="{% static 'CSS/accounts/base.css' %}" rel="stylesheet">
+	<link href="{% static 'CSS/accounts/register.css' %}" rel="stylesheet">
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jqueryui.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+{% endblock %}
+
+{% block write_js %}
+	
+{% endblock  %}
+
+
+{% block main_content  %}
+
+	<div id="header">
+		<h2 style="color:#333"> REGISTER </h2>
+	</div>
+	<form enctype="multipart/form-data" method="post" action="/accounts/newuser/">
+	{% csrf_token %}
+		<div id="form-content">
+		
+			<div class="left-content">
+				<strong class="s-attr"> First Name</strong>
+				<strong class="s-attr"> Last Name</strong>
+				<strong class="s-attr"> Date of Birth</strong>
+				<strong class="s-attr"> Father's Name</strong>
+				<strong class="s-attr"> Mother's Name</strong>
+				<strong class="s-attr"> Mobile No.</strong>
+				<strong class="s-attr"> Alternate Mobile No.</strong>
+				<strong class="s-attr"> Password </strong>
+				<strong class="s-attr"> Confirm Password</strong>
+				<strong class="s-attr"> Town/Village</strong>
+				<strong class="s-attr"> Pin Code</strong>
+				<strong class="s-attr"> Address</strong>
+				<strong class="s-attr" id="dp_upload"> Passport Photo </strong>
+
+			</div>
+			<div class="right-content">
+				<input type="text" name="f_name" placeholder="First Name" class="fst">
+				<input type="text" name="l_name" placeholder="Last Name" class="s-input">
+				<input type="text" name="dob" placeholder="Date of birth" class="s-input">
+				<input type="text" name="Fa_name" placeholder="Father's Name" class="s-input">
+				<input type="text" name="Mo_name" placeholder="Mother's Name" class="s-input">
+				<input type="text" name="Mob1" placeholder="Mobile Number" class="s-input">
+				<input type="text" name="Mob2" placeholder="Alternate Mobile Number" class="s-input">
+				<input type="password" name="pswd1" placeholder="Password" class="s-input">
+				<input type="password" name="pswd2" placeholder="Re-enter Password" class="s-input">
+				<input type="text" name="town_vil" placeholder="Town Village" class="s-input">
+				<input type="text" name="zip_code" placeholder="Pin Code" class="s-input">
+				<textarea  name="addr" placeholder="Address" class="s-input-addr" > </textarea>
+				<input type="file" placeholder="Picture" name="dp" class="s-input-addr" />
+			</div>
+
+		</div>
+
+		<button type="reset" value="RESET" class='buttons' id="reset-btn">RESET </button>
+		<button type="submit" name="register" value="pay_now" class='buttons'> PROCEED TO PAY </button>
+		<button type="submit" name="register" value="pay_later" class='buttons'> PAY LATER </button>
+
+	</form>
+
+{% endblock %}
