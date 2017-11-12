@@ -28,7 +28,7 @@ def render_adminlogin(request):
 
 def adminloginrequest(request):
 	try:
-		db = MySQLdb.connect("localhost", "root", "@mysql12", "PHYSICSGRIP")
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ", e
@@ -62,7 +62,7 @@ def adminloginrequest(request):
 @user_passes_test(check_admin,login_url='/admin/login/')
 def adminlogoutrequest(request):
 	try:
-		db = MySQLdb.connect("localhost", "root", "@mysql12", "PHYSICSGRIP")
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ", e
@@ -85,7 +85,7 @@ def adminlogoutrequest(request):
 @user_passes_test(check_admin,login_url='/admin/login/')
 def render_adminhome(request):
 	try:
-		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ",e
@@ -147,7 +147,7 @@ def render_adminhome(request):
 def view_or_delete_due(request):
 	print ">>> POST : ",request.POST
 	try:
-		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ",e
@@ -231,7 +231,7 @@ def view_or_delete_due(request):
 @user_passes_test(check_admin,login_url='/admin/login/')
 def courses_render(request):
 	try:
-		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ",e
@@ -272,7 +272,7 @@ def courses_render(request):
 @user_passes_test(check_admin,login_url='/admin/login/')
 def create_course(request):
 	try:
-		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ",e
@@ -351,7 +351,7 @@ def create_course(request):
 @user_passes_test(check_admin,login_url='/admin/login/')
 def process_course(request):
 	try:
-		db = MySQLdb.connect("localhost", "root", "@mysql12", "PHYSICSGRIP")
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ", e
@@ -423,7 +423,7 @@ def gallery_render(request):
 @user_passes_test(check_admin,login_url='/admin/login/')
 def upload_gallery(request):
 	try:
-		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ",e
@@ -467,7 +467,7 @@ def ambassadors_render(request):
 @user_passes_test(check_admin,login_url='/admin/login/')
 def upload_ambassadors(request):
 	try:
-		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ",e
@@ -507,7 +507,7 @@ def upload_ambassadors(request):
 @user_passes_test(check_admin,login_url='/admin/login/')
 def subject_render(request):
 	try:
-		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ",e
@@ -534,7 +534,7 @@ def subject_render(request):
 @user_passes_test(check_admin,login_url='/admin/login/')
 def create_subject(request):
 	try:
-		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ",e
@@ -606,7 +606,7 @@ def sections_render(request):
 @user_passes_test(check_admin,login_url='/admin/login/')
 def process_section(request):
 	try:
-		db = MySQLdb.connect("localhost", "root", "@mysql12", "PHYSICSGRIP")
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ", e
@@ -671,7 +671,7 @@ def search_render(request):
 
 def return_courses(request):
 	try:
-		db = MySQLdb.connect("localhost", "root", "@mysql12", "PHYSICSGRIP")
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ", e
@@ -698,7 +698,7 @@ def return_courses(request):
 
 def return_sections(request):
 	try:
-		db = MySQLdb.connect("localhost", "root", "@mysql12", "PHYSICSGRIP")
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ", e
@@ -724,7 +724,7 @@ def return_sections(request):
 
 def search_result(request):
 	try:
-		db = MySQLdb.connect("localhost", "root", "@mysql12", "PHYSICSGRIP")
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ", e
@@ -752,7 +752,7 @@ def search_result(request):
 
 def searchbyname_result(request):
 	try:
-		db = MySQLdb.connect("localhost", "root", "@mysql12", "PHYSICSGRIP")
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ", e
@@ -786,7 +786,7 @@ def searchbyname_result(request):
 def view_or_delete_student(request):
 	print ">>> POST : ",request.POST
 	try:
-		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ",e

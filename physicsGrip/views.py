@@ -5,7 +5,7 @@ from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 import MySQLdb
 
-db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 cursor = db.cursor()
 
 def render_home(request):
@@ -16,7 +16,7 @@ def render_home(request):
 		return render(request, 'accounts/home.html', {})
 
 def render_gallery(request):
-	db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+	db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 	cursor = db.cursor()
 	q1 = """ select MAX(imageID) from GALLERY """
 	cursor.execute(q1)
@@ -45,7 +45,7 @@ def render_gallery(request):
 	return render(request, 'accounts/gallery.html',  {'data' : data, 'extend_page' : extend_page})
 
 def render_courses(request):
-	db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+	db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 	cursor = db.cursor()
 	print ">>> connected to db"
 	q1 = """ select * from COURSES """

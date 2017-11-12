@@ -2,32 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f961b8c-662e-44c2-8934-01826513c0c4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/User_dp/UserDP_2017-11-10 15:51:35.851493" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/User_dp/UserDP_2017-11-12 00:19:32.741752" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/User_dp/UserDP_2017-11-12 15:41:22.218796" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abc.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/template/accounts/another_reg.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/template/accounts/time_table.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/template/admin/custom_page.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/template/admin/errorpage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/urls.py" afterPath="$PROJECT_DIR$/accounts/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/views.py" afterPath="$PROJECT_DIR$/accounts/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/forms.py" afterPath="$PROJECT_DIR$/admin/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/urls.py" afterPath="$PROJECT_DIR$/admin/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/views.py" afterPath="$PROJECT_DIR$/admin/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physicsGrip/create_table.sql" afterPath="$PROJECT_DIR$/physicsGrip/create_table.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physicsGrip/settings.py" afterPath="$PROJECT_DIR$/physicsGrip/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physicsGrip/views.py" afterPath="$PROJECT_DIR$/physicsGrip/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/CSS/admin/base.css" afterPath="$PROJECT_DIR$/static/CSS/admin/base.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/CSS/admin/createcourse.css" afterPath="$PROJECT_DIR$/static/CSS/admin/createcourse.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/CSS/admin/search.css" afterPath="$PROJECT_DIR$/static/CSS/admin/search.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/accounts/courses.html" afterPath="$PROJECT_DIR$/template/accounts/courses.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/accounts/register.html" afterPath="$PROJECT_DIR$/template/accounts/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/admin/createcourse.html" afterPath="$PROJECT_DIR$/template/admin/createcourse.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/admin/search.html" afterPath="$PROJECT_DIR$/template/admin/search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/base_login.html" afterPath="$PROJECT_DIR$/template/base_login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/errorpage.html" afterPath="$PROJECT_DIR$/template/errorpage.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,31 +24,11 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/accounts/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8354">
-              <caret line="39" column="26" lean-forward="true" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+            <state relative-caret-position="-1197">
+              <caret line="333" column="125" lean-forward="false" selection-start-line="333" selection-start-column="125" selection-end-line="333" selection-end-column="125" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="errorpage.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/template/errorpage.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="errorpage.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/template/admin/errorpage.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-218">
-              <caret line="0" column="31" lean-forward="true" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -79,8 +36,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="867" column="0" lean-forward="true" selection-start-line="867" selection-start-column="0" selection-end-line="867" selection-end-column="0" />
+            <state relative-caret-position="411">
+              <caret line="788" column="125" lean-forward="false" selection-start-line="788" selection-start-column="125" selection-end-line="788" selection-end-column="125" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -88,41 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/physicsGrip/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="11" column="50" lean-forward="true" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="abc.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/abc.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="10" lean-forward="true" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom_page.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/template/admin/custom_page.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="31" lean-forward="true" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+            <state relative-caret-position="756">
+              <caret line="47" column="121" lean-forward="false" selection-start-line="47" selection-start-column="121" selection-end-line="47" selection-end-column="121" />
               <folding />
             </state>
           </provider>
@@ -138,16 +65,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create_table.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/physicsGrip/create_table.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="58" column="17" lean-forward="true" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -158,11 +75,14 @@
       <find>dropdown</find>
       <find>another</find>
       <find>return</find>
+      <find>(&quot;localhost&quot;,&quot;root&quot;,&quot;@mysql12&quot;,&quot;PHYSICSGRIP&quot; )</find>
+      <find>(&quot;localhost&quot;, &quot;root&quot;, &quot;@mysql12&quot;, &quot;PHYSICSGRIP&quot;)</find>
     </findStrings>
     <replaceStrings>
       <replace>'login' : user_loggedin})</replace>
       <replace>, 'login' : user_loggedin})</replace>
       <replace>user_loggedin = request.user.is_authenticated()</replace>
+      <replace>(&quot;physicsgrip.mysql.pythonanywhere-services.com&quot;,&quot;physicsgrip&quot;,&quot;@mysql12&quot;,&quot;physicsgrip$default&quot; )</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -207,11 +127,11 @@
         <option value="$PROJECT_DIR$/template/admin/createcourse.html" />
         <option value="$PROJECT_DIR$/static/CSS/admin/createcourse.css" />
         <option value="$PROJECT_DIR$/physicsGrip/settings.py" />
-        <option value="$PROJECT_DIR$/accounts/views.py" />
         <option value="$PROJECT_DIR$/template/admin/errorpage.html" />
-        <option value="$PROJECT_DIR$/admin/views.py" />
         <option value="$PROJECT_DIR$/template/admin/custom_page.html" />
         <option value="$PROJECT_DIR$/physicsGrip/views.py" />
+        <option value="$PROJECT_DIR$/accounts/views.py" />
+        <option value="$PROJECT_DIR$/admin/views.py" />
       </list>
     </option>
   </component>
@@ -494,6 +414,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="24" width="1315" height="780" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991317" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -503,7 +424,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24625099" sideWeight="0.8015504" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24625099" sideWeight="0.8015504" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24940805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16179952" sideWeight="0.19844961" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -839,26 +760,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8354">
-          <caret line="39" column="26" lean-forward="true" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="867" column="0" lean-forward="true" selection-start-line="867" selection-start-column="0" selection-end-line="867" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -883,18 +784,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/physicsGrip/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="11" column="50" lean-forward="true" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/abc.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1197">
+          <caret line="333" column="125" lean-forward="false" selection-start-line="333" selection-start-column="125" selection-end-line="333" selection-end-column="125" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="788" column="125" lean-forward="false" selection-start-line="788" selection-start-column="125" selection-end-line="788" selection-end-column="125" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/physicsGrip/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="47" column="121" lean-forward="false" selection-start-line="47" selection-start-column="121" selection-end-line="47" selection-end-column="121" />
           <folding />
         </state>
       </provider>

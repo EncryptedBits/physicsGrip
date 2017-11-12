@@ -10,11 +10,6 @@ from time import strftime, localtime
 import datetime
 import MySQLdb
 
-
-db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
-cursor = db.cursor()
-
-
 def save_image(img):
 	fs = FileSystemStorage()
 	path_to_dp = 'User_dp/'+str('UserDP_')+str(datetime.datetime.now())
@@ -35,7 +30,7 @@ def render_registerForm(request):
 
 def register_newuser(request):
 	try:
-		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ",e
@@ -246,7 +241,7 @@ def register_newuser(request):
 
 def register_payment(request):
 	try:
-		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ",e
@@ -336,7 +331,7 @@ def register_payment(request):
 
 def render_studenthome(request):
 	try:
-		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP")
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ",e
@@ -414,7 +409,7 @@ def render_studenthome(request):
 
 def user_login(request):
 	try:
-		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+		db = MySQLdb.connect("physicsgrip.mysql.pythonanywhere-services.com","physicsgrip","@mysql12","physicsgrip$default" )
 		cursor = db.cursor()
 	except Exception as e:
 		print ">>> ERROR : ",e
