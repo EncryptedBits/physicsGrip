@@ -23,6 +23,6 @@ urlpatterns = [
     url(r'^returnsections/$', views.return_sections),
     url(r'^searchresult/$', views.search_result),
     url(r'^returnnamesearch/$', views.searchbyname_result),
-    
+    url(r'^requeststudentordeletestudent/$', views.view_or_delete_student),
 
 ]

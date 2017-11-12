@@ -1,11 +1,11 @@
-{% extends extend_page %}
+{% extends 'admin/base.html' %}
 {% load static %}
 
-{% block pagetitle %}  ERROR | Physics Grip {% endblock %}
+{% block pagetitle %}  {{ title }} | Physics Grip {% endblock %}
 
 {% block import %}
 
-	
+
 	<link href="{% static 'CSS/accounts/base.css' %}" rel="stylesheet">
 	<link href="{% static 'CSS/errorpage.css' %}" rel="stylesheet">
 	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jqueryui.css" rel="stylesheet">
@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block write_js %}
-	
+
 {% endblock  %}
 
 {% block main_content  %}
@@ -24,11 +24,11 @@
 
 	<div id="centermaker">
 		<div id="header">
-			<h2  style="color:#333"> ERROR OCCURED </h2>
+			<h2  style="color:#333"> {{ header }} </h2>
 		</div>
 
 		<div id="msg">
-			<h2> {{ error_msg }} </h2>
+			<h2> {{ msg }} </h2>
 		</div>
 
 	</div>

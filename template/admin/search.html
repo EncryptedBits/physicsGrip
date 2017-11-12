@@ -83,29 +83,8 @@
 			}
 		  });
 		});
-
-		$('#nameform').submit(function(){
-		//console.log("gfhjkl")
-			var name = $('#namee').val()
-			console.log(name)
-			$.ajax({
-			type: "POST",
-			url: "/admin/returnnamesearch/",
-			data: {
-			  'name': name,
-			  'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
-			},
-			dataType: 'json',
-			success: function (data) {
-				var count = data['total']
-				for(i=0;i < count ; i++){
-
-				}
-			}
-		  });
-		});
-
 	});
+
 
 {% endblock  %}
 
@@ -118,9 +97,9 @@
 			<div id="header">
 				<h2 style="color:#333"> SEARCH STUDENTS </h2>
 			</div>
-
 			<div id="filter_card">
 				<span style="text-align:center;"><h3 style=" margin-buttom:20px;">Filter the students...</h3></span>
+
 				<form action="#" method="post"> {% csrf_token %}
 					<div class="filter_option">
 						<strong>Class of student :</strong>
@@ -130,14 +109,12 @@
 							<option value="12">XII</option>
 						</select>
 					</div>
-
 					<div class="filter_option">
 						<strong>Course :</strong>
 						<select id="course">
 							<option value="0">Course</option>
 						</select>
 					</div>
-
 					<div class="filter_option">
 						<strong>Section of student :</strong>
 						<select id="c_sec">
@@ -145,7 +122,7 @@
 						</select>
 					</div>
 					<div class="filter_option">
-						<br />
+					<br />
 						<strong>Fee Due(Rs) :</strong>
 						<select id="claass">
 							<option value="0">Due Fee</option>
@@ -155,449 +132,28 @@
 							<option value="5001">more than 5000</option>
 						</select>
 					</div>
-
 					<div class="filter_option">
 						<button type="submit" class="buttons"> SEARCH STUDENTS </button>
 					</div>
 				</form>
-				<hr />
-			<form action="#" method="post" id="nameform"> {% csrf_token %}
-				<div id="srchbyname">
-				Or, search by name :
-				<input type="text" name="search_name" id="namee">
-				<button class="buttons" type="submit"> SEARCH STUDENTS </button>
-				</div>
-			</form>
-			</div>
-
 			<hr/>
+				<form action="/admin/returnnamesearch/" method="post" id="nameform"> {% csrf_token %}
+					<div id="srchbyname">
+					Or, search by name :
+					<input type="text" name="search_name" id="namee" />
+					<button class="buttons" type="submit"> SEARCH STUDENTS </button>
+					</div>
+				</form>
 
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
 			</div>
 
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
-			</div>
 
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
+			<form method="POST" action="/admin/requeststudentordeletestudent/" >
+			{% csrf_token %}
+			<div id="search_tab" style="background-color:yellow;">
+				<h1> Hi How are you... </h1>
 			</div>
-
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
-			</div>
-
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
-			</div>
-
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
-			</div>
-
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
-			</div>
-
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
-			</div>
-		</div>
+			</form>
+	</div>
 
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-<!DOCTYPE HTML>
-{% load static %}
-<html>
-<head>
-	<title> Search | Physics Grip </title>
-	<link rel="icon" href="{% static './IMAGES/accounts/pic1.png' %}" type="image/png" >
-	<meta charset="utf-8">
-	<link href="{% static 'CSS/accounts/search.css' %}" rel="stylesheet">
-	<link href="{% static 'CSS/accounts/base.css" rel="stylesheet">
-	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jqueryui.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
-
-
-<script type="text/javascript" language="javascript">
-
-	$(document).ready(function(){
-		//console.log($(".nav_dropdown").eq(2));
-		var idx = $('')
-		$('.nav_o4').mouseenter(function(){
-			$('.nav_dropdown4').slideDown('slow')
-		});
-		$('.nav_o4').mouseleave(function(){
-			$('.nav_dropdown4').slideUp(100);
-		});
-		$('.nav_o5').mouseenter(function(){
-			$('.nav_dropdown5').slideDown('slow')
-		});
-		$('.nav_o5').mouseleave(function(){
-			$('.nav_dropdown5').slideUp('fast')
-		});
-	});
-
-	$(document).ready(function() {
-		$('#signIn').click(function(){
-			$('.login_in').val('');
-			$('#login_window').show('drop',{direction: 'up'}, 500);
-			$('#login_window').effect( "bounce", {times:7}, 1000 );
-		});
-	});
-
-	$(document).ready(function(){
-		$('#login_sub').click(function(){
-			$('#login_window').hide('drop', {direction : "up"}, 500);
-		});
-	});
-
-	$(document).ready(function(){
-		$('#cut-img').click(function(){
-			$('#login_window').hide('drop', {direction : "up"}, 500);
-		});
-	});
-
-	$(document).ready(function(){
-		$('#show_pswd').change(function(){
-			if(this.checked){
-				$('#sec').attr('type','text');
-			}
-			else{
-				$('#sec').attr('type','password');
-			}
-		});
-	});
-	
-</script>
-
-</head>
-
-<body >
-	<div id="main_header" style="position:fixed;">
-		<div class="header-text-large"><h1> PHYSICS GRIP </h1></div>
-		<div class="header-text-small"> <sub> WHERE EXELLENCE IS A ROUTINE</sub> </div> 
-	</div>
-	
-	<div id="rel_container">
-
-	<div id="nav_bar">
-		<div class="nav_o nav_o1" id="first_nav">
-			<div class="nav_oh" >
-				 <i class="fa fa-home" style="font-size:18px;color:white"></i>  <strong> HOME</strong>
-			</div>
-		</div>
-		<div class="nav_o nav_o2">
-			<div class="nav_oh">
-				<i class="fa fa-mortar-board" style="font-size:18px;color:white"></i><strong> COURSES</strong>
-			</div>
-		</div>
-		<div class="nav_o nav_o3">
-			<div class="nav_oh">
-				<i class="fa fa-camera-retro" style="font-size:18px;color:white"></i>
-<strong> GALLERY </strong>
-			</div>
-		</div>
-		<div class="nav_o nav_o4">
-			<div class="nav_oh">
-				<i class="fa fa-tags" style="font-size:18px;color:white"></i><strong> ABOUT US </strong>
-			</div>
-			<div class="nav_dropdown nav_dropdown4">
-				<ul>
-					<li> <i class="fa fa-balance-scale" style="font-size:18px;color:white"></i>&nbsp&nbsp PREV. RESULTS </li>
-					<li><i class="fa fa-user-circle-o" style="font-size:18px;color:white"></i>&nbsp&nbsp&nbsp OUR AMBASSADORS </li>
-					<li> <i class="fa fa-handshake-o" style="font-size:18px;color:white"></i>&nbsp&nbsp CONTACT US </li>
-				</ul>
-			</div>
-		</div>
-		<div class="nav_o nav_o5">
-			<div class="nav_oh">
-				<i class="fa fa-users" style="font-size:18px;color:white"></i> Sign In
-			</div>
-			<div class="nav_dropdown nav_dropdown5">
-				<ul>
-					<li> <a href="#" id="signIn" style="text-decoration:none; color:white;"><i class="fa fa-sign-in" style="font-size:18px;color:white"></i>&nbsp&nbsp signIn</a> </li>
-					<li> <a href="#" id="signOut"  style="text-decoration:none; color:white;"><i class="fa fa-sign-out" style="font-size:18px;color:white"></i>&nbsp&nbsp signOut</a> </li>
-					<hr />
-					<li> <a href="./register.html" id="signUp" style="text-decoration:none; color:white;"><i class="fa fa-gears" style="font-size:18px;color:white"></i>&nbsp&nbsp signUp</a> </li>
-				</ul>
-			</div>
-		</div>
-		
-		
-	</div>
-		<div id="centermaker">
-			<div id="header">
-				<h2 style="color:#333"> SEARCH STUDENTS </h2>
-			</div>
-
-			<div id="filter_card">
-				<span style="text-align:center;"><h3 style=" margin-buttom:20px;">Filter the students...</h3></span>
-				<form action="" method="post">
-					<div class="filter_option">
-						<strong>Class of student :</strong>
-						<select>
-							<option>Class</option>
-							<option>XI</option>
-							<option>XII</option>
-						</select>
-					</div>
-					<div class="filter_option">
-						<strong>Section of student :</strong>
-						<select>
-							<option>Section</option>
-							<option>A</option>
-							<option>B</option>
-							<option>C</option>
-						</select>
-					</div>
-					<div class="filter_option">
-						<br />
-						<strong>Fee Due(Rs) :</strong>
-						<select>
-							<option>Due Fee</option>
-							<option>1 - 500</option>
-							<option>501 - 1000</option>
-							<option>1001 - 1500</option>
-							<option>1501 - 2000</option>
-						</select>
-					</div>
-
-					<div class="filter_option">
-						<button type="submit" class="buttons"> SEARCH STUDENTS </button>
-					</div>
-				</form>
-				<hr />
-				<div id="srchbyname">
-				Or, search by name : 
-				<input type="text" name="search_name">
-				<button class="buttons" type="submit"> SEARCH STUDENTS </button>
-				</div>
-
-			</div>
-
-			<hr/>
-
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
-			</div>
-
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
-			</div>
-
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
-			</div>
-
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
-			</div>
-
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
-			</div>
-
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
-			</div>
-
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
-			</div>
-
-			<div class="search_res">
-				<div class="search_img">
-					<img src="#" alt="student_pic">
-				</div>
-				<div class="stud_info">
-					<a href="" style="text-decoration: none;"><span style="font-size:20px;"><strong >Niranjan kumar gupta</strong></span></a> <br/>
-					<div class="card_name"><strong>ROLL NO</strong></div>
-					<div class="card_name"><strong>COURSE : </strong> CSO101</div>
-				</div>
-			</div>
-		</div>
-		
-		<div id="login_window">
-		<h2 class="cross">LOGIN</h2> <img src="./IMAGES/cut.png" class="cross pointer" id="cut-img" height="30px" width="30px">
-		<input type="text" name="email_id" placeholder="Email id" class="login_in"/>
-		<input type="password" name="pswd" placeholder="Password" class="login_in" id="sec"/>
-		<sub><label><input type="checkbox"/ id="show_pswd"> Show password </label><sub>
-		<br />
-		<input type="submit" name="submit" value="LOGIN" id="login_sub" class="pointer" />
-	</div>
-	<div id="footer">
-		<div id="footer_left">
-			<strong>CONTACT US &nbsp &nbsp &nbsp &nbsp   </strong> <br /> <br />
-			<span style="font-size:15px;"> 9986547502 7546802450 </span> &nbsp &nbsp<i class="fa fa-fax" style="font-size:15px;color:red"></i>  <br />
-			<span style="font-size:15px;">ykgupta@gmail.com </span>&nbsp <i class="fa fa-envelope-open" style="font-size:15px;color:red"></i> <br/>
-			<span style="font-size:15px;">fb.com/YK Gupta  </span> &nbsp <i class="fa fa-globe" style="font-size:18px;color:red"></i>
-			<br>
-		</div>
-
-		<div id="footer_right">
-			<strong>&nbsp &nbsp &nbsp &nbsp &nbsp  CONTACT US   </strong> <br /> <br />
-			<span style="font-size:15px;">&nbsp <i class="fa fa-fax" style="font-size:15px;color:red"></i> &nbsp  9986547502 7546802450 </span>   <br />
-			<span style="font-size:15px;">&nbsp <i class="fa fa-envelope-open" style="font-size:15px;color:red"></i> &nbsp ykgupta@gmail.com </span>  <br/>
-			<span style="font-size:15px;">&nbsp <i class="fa fa-globe" style="font-size:18px;color:red"></i> &nbsp fb.com/YK Gupta  </span>  
-			<br>
-		</div>
-
-
-		<div id="footer_buttom">
-			<br />
-			&copy PHYSICS GRIP 2017 <br />
-			<span style="font-size:12px;"> NKG DEVELOPMENTS </span>
-		</div>
-
-	</div>
-	</div>
-
-</body>
-
-</html>
-
-
--->

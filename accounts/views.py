@@ -33,7 +33,6 @@ def render_registerForm(request):
 		extend_page = 'base.html'
 	return render(request, 'accounts/register.html', { 'extend_page' : extend_page})
 
-
 def register_newuser(request):
 	try:
 		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
@@ -52,6 +51,7 @@ def register_newuser(request):
 		return render(request, 'errorpage.html', {'error_msg': msg, 'extend_page' : extend_page})
 	if request.method == 'POST':
 		#print ">>> ",request.POST
+		print ">>> COURSE SELECTED ",request.session['course_selected']
 		new_studForm = studentForm(request.POST, request.FILES)
 		if new_studForm.is_valid():
 			f_name = new_studForm.cleaned_data['f_name']
@@ -67,7 +67,6 @@ def register_newuser(request):
 			zip_code = new_studForm.cleaned_data['zip_code']
 			addr = new_studForm.cleaned_data['addr']
 			dp = new_studForm.cleaned_data.get('dp', None)
-
 			if pswd1 != pswd2:
 				msg = "The password do not match..."
 				user_loggedin = request.user.is_authenticated()
@@ -121,8 +120,10 @@ def register_newuser(request):
 					q_c2 = """ select curr_addm_sec from COURSES where courseID = %d """%(int(request.session['course_selected']))
 					cursor.execute(q_c2)
 					data1 = cursor.fetchone()
-
-					q_s1 = """ update SECTION set no_of_stud = no_of_stud + 1 where sectionID = %d """%(data1[0])
+					print ">>> CURR SECTION table fetched..."
+					if data1[0] == None:
+						return render(request, 'errorpage.html', {'error_msg' : "The addmission section is not defined. Contact the administrator."})
+					q_s1 = """ update SECTION set no_of_stud = no_of_stud + 1 where sectionID = %d """%(int(data1[0]))
 					cursor.execute(q_c1)
 					#db.commit()
 				 	print ">>> SECTION table updated..."
@@ -143,6 +144,8 @@ def register_newuser(request):
 					if dp:
 						#print ">>> dp addition begin..."
 				 		uploaded_file_url = save_image(dp)
+					else:
+						uploaded_file_url = settings.DEFAULT_DP
 						q4 = """ update STUDENTS set pathofdp = '%s' where Mob1 = '%s' """%(uploaded_file_url, Mob1)
 						cursor.execute(q4)
 						db.commit()
@@ -154,7 +157,7 @@ def register_newuser(request):
 					else:
 						extend_page = 'base.html'
 					db.close()
-					return render(request, 'custom_page.html',{'title' : "SUCCESS", 'header': "REGISTERED", 'msg' : "You are now successfully registered. Login to continue...", 'extend_page' : extend_page})
+					return render(request, 'custom_page.html',{'title' : "SUCCESS", 'header': "REGISTERED", 'msg' : "You are now successfully registered. Your roll no is : %d..."%(data), 'extend_page' : extend_page})
 				except Exception as e:
 					db.rollback()
 					print ">>> ERROR : ",e
@@ -331,6 +334,84 @@ def register_payment(request):
 			return render(request, 'errorpage.html', {'error_msg': msg, 'extend_page' : extend_page})
 
 
+def render_studenthome(request):
+	try:
+		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP")
+		cursor = db.cursor()
+	except Exception as e:
+		print ">>> ERROR : ",e
+		if settings.DEBUG :
+			msg = "DATABASE ERROR : Connection not established..."
+		else:
+			msg = "INTERNAL ERROR : Connection not established..."
+		user_loggedin = request.user.is_authenticated()
+		if user_loggedin:
+			extend_page = 'base_login.html'
+		else:
+			extend_page = 'base.html'
+		return render(request, 'errorpage.html', {'error_msg': msg, 'extend_page' : extend_page})
+	try:
+		q1 = """ select * from STUDENTS where rollno = %d """ % (int(request.session['username']))
+		cursor.execute(q1)
+		print ">>> STUDENTs' details retrieved..."
+		result = cursor.fetchone()
+		#for i in result:
+		#	print i, type(i)
+		context = {}
+		context['f_name'] = result[0]
+		context['l_name'] = result[1]
+		context['dob'] = result[2]
+		context['Fa_name'] = result[3]
+		context['Mo_name'] = result[4]
+		context['Mob1'] = result[5]
+		context['Mob2'] = result[6]
+		context['pswd'] = result[7]
+		context['town_vil'] = result[8]
+		context['zip_code'] = result[9]
+		context['addr'] = result[10]
+		context['pathofdp'] = result[11]
+		context['rollno'] = result[12]
+		context['DUE'] = result[13]
+		print ">>> 1"
+		q2 = """ select course_id, section, reg_no from REGISTRATIONS where stud_roll = %d """ % (int(request.session['username']))
+		cursor.execute(q2)
+		stud_data = cursor.fetchone()
+		print ">>> 1"
+		print ">>> 2"
+		q3 = """ select name from COURSES where courseID = %d """ % (stud_data[0])
+		cursor.execute(q3)
+		crs = cursor.fetchone()
+		print ">>> 2"
+		context['course'] = crs[0]
+		print ">>> 3"
+		q4 = """ select name from SECTION where sectionID = %d """ % (stud_data[1])
+		cursor.execute(q4)
+		sec = cursor.fetchone()
+		print ">>> 3"
+		context['section'] = sec[0]
+		context['registration_no'] = stud_data[2]
+		user_loggedin = request.user.is_authenticated()
+		if user_loggedin:
+			extend_page = 'base_login.html'
+		else:
+			extend_page = 'base.html'
+		context['extend_page'] = extend_page
+		db.close()
+		return render(request, 'accounts/student_profile.html', context)
+	except:
+		if settings.DEBUG:
+			msg = "DATABASE ERROR : Query not executed..."
+		else:
+			msg = "INTERNAL ERROR : Some problem Occured..."
+		user_loggedin = request.user.is_authenticated()
+		if user_loggedin:
+			extend_page = 'base_login.html'
+		else:
+			extend_page = 'base.html'
+		db.close()
+		return render(request, 'errorpage.html', {'error_msg': msg, 'extend_page': extend_page})
+
+
 def user_login(request):
 	try:
 		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
@@ -346,7 +427,6 @@ def user_login(request):
 			extend_page = 'base_login.html'
 		else:
 			extend_page = 'base.html'
-		db.close()
 		return render(request, 'errorpage.html', {'error_msg': msg, 'extend_page' : extend_page})
 	if request.method == 'POST':
 		username = int((request.POST['user_name']).strip())
@@ -364,9 +444,10 @@ def user_login(request):
 			if user is not None:
 				login(request, user)
 				print ">>> User logined..."
+				print ">>> LOGIN USER",request.user
 				request.session['username'] = username
 				try:
-					q1 = """ select * from STUDENTS where rollno = %d """%(int(username))
+					q1 = """ select * from STUDENTS where rollno = %d """%(int(request.session['username']))
 					cursor.execute(q1)
 					print ">>> STUDENTs' details retrieved..."
 					result = cursor.fetchone()
@@ -433,6 +514,10 @@ def user_login(request):
 		extend_page = 'base.html'
 	db.close()
 	return render(request, 'errorpage.html', {'error_msg': "Login from login window...", 'extend_page' : extend_page})
+
+def render_schedule(request):
+	pass
+
 
 def user_logout(request):
 	logout(request)

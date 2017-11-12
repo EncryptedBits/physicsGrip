@@ -1,8 +1,3 @@
-#rel_container{
-	position: relative;
-	top: 80px;
-}
-
 #header{
 	text-align: center;
 	font-family:  purisa;
@@ -18,7 +13,7 @@
 	height: 200px;
 	margin: 5px auto;
 	padding: 10px;
-	background-color: white;
+	background-color: yellow;
 	border-radius: 10px;
 	box-shadow: -2px 2px 2px 2px #666666;
 }

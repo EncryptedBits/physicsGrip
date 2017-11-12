@@ -56,7 +56,11 @@
 		</table>
 		<form action="/accounts/register/" method="post">
 		{% csrf_token %}
+		{% if loggedin %}
+		<button class='buttons' type="submit" name="register" value="{{ course.0 }}" disabled> REGISTER </button>
+		{% else %}
 		<button class='buttons' type="submit" name="register" value="{{ course.0 }}"> REGISTER </button>
+		{% endif %}
 		</form>
 
 

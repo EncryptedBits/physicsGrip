@@ -1,11 +1,11 @@
-{% extends extend_page %}
+{% extends 'admin/base.html' %}
 {% load static %}
 
 {% block pagetitle %}  ERROR | Physics Grip {% endblock %}
 
 {% block import %}
 
-	
+
 	<link href="{% static 'CSS/accounts/base.css' %}" rel="stylesheet">
 	<link href="{% static 'CSS/errorpage.css' %}" rel="stylesheet">
 	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jqueryui.css" rel="stylesheet">
@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block write_js %}
-	
+
 {% endblock  %}
 
 {% block main_content  %}

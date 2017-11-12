@@ -13,6 +13,7 @@ class ambForm(forms.Form):
 
 class courseForm(forms.Form):
     c_name = forms.CharField(max_length=30)
+    classs = forms.IntegerField()
     fee = forms.IntegerField()
     pre_req = forms.CharField(max_length=30)
     adm_beg = forms.DateField()

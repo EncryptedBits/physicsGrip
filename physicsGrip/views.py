@@ -15,8 +15,6 @@ def render_home(request):
 	else:
 		return render(request, 'accounts/home.html', {})
 
-
-
 def render_gallery(request):
 	db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
 	cursor = db.cursor()
@@ -45,8 +43,6 @@ def render_gallery(request):
 	else:
 		extend_page = 'base.html'
 	return render(request, 'accounts/gallery.html',  {'data' : data, 'extend_page' : extend_page})
-	
-
 
 def render_courses(request):
 	db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
@@ -59,10 +55,11 @@ def render_courses(request):
 	user_loggedin = request.user.is_authenticated()
 	if user_loggedin:
 		extend_page = 'base_login.html'
+		loggedin = True
 	else:
 		extend_page = 'base.html'
-	return render(request, 'accounts/courses.html', {'total_courses' : total_courses, 'extend_page' : extend_page})
-
+		loggedin = False
+	return render(request, 'accounts/courses.html', {'total_courses' : total_courses, 'extend_page' : extend_page, 'loggedin':loggedin})
 
 def render_ambassadors(request):
 	user_loggedin = request.user.is_authenticated()

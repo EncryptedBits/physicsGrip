@@ -30,6 +30,7 @@
 		
 			<div class="left-content">
 				<strong class="s-attr"> Course Name</strong>
+				<strong class="s-attr"> Class</strong>
 				<strong class="s-attr"> Fee</strong>
 				<strong class="s-attr"> Pre requisite</strong>
 				<strong class="s-attr"> Addmission beg. Date</strong>
@@ -41,12 +42,13 @@
 			</div>
 			<div class="right-content">
 				<input type="text" name="c_name" placeholder="Course Name" class="fst">
+				<input type="number" name="classs" placeholder="11 or 12" class="s-input">
 				<input type="text" name="fee" placeholder="Fee (in Rs)" class="s-input">
 				<input type="text" name="pre_req" placeholder="Pre requisite" class="s-input">
-				<input type="text" name="adm_beg" placeholder="Beginning date (YYYY-MM-DD)" class="s-input">
-				<input type="text" name="adm_end" placeholder="End date (YYYY-MM-DD)" class="s-input">
-				<input type="text" name="c_beg" placeholder="Beginning date (YYYY-MM-DD)" class="s-input">
-				<input type="text" name="c_end" placeholder="End date (YYYY-MM-DD)" class="s-input">
+				<input type="date" name="adm_beg" placeholder="Beginning date (YYYY-MM-DD)" class="s-input">
+				<input type="date" name="adm_end" placeholder="End date (YYYY-MM-DD)" class="s-input">
+				<input type="date" name="c_beg" placeholder="Beginning date (YYYY-MM-DD)" class="s-input">
+				<input type="date" name="c_end" placeholder="End date (YYYY-MM-DD)" class="s-input">
 				<div class="s-input">
 					<select name="sub1" class="sel">
 						<option value="not_selected"> Select </option>
@@ -102,6 +104,7 @@
 	<div id="form-content1">
 			<div class="left-content1">
 				<strong class="s-attr1"> Course Name</strong>
+				<strong class="s-attr1"> Class</strong>
 				<strong class="s-attr1"> Fee</strong>
 				<strong class="s-attr1"> Pre requisite</strong>
 				<strong class="s-attr1"> Addmission beg. Date</strong>
@@ -114,6 +117,7 @@
 			</div>
 			<div class="right-content1">
 				<div class="fst1">{{coursec.0.0}}</div>
+				<div class="s-input1">{{coursec.0.10}} </div>
 				<div class="s-input1">{{coursec.0.1}} </div>
 				<div class="s-input1">{{coursec.0.3}}</div>
 				<div class="s-input1">{{coursec.0.6}}</div>
@@ -128,7 +132,7 @@
 				<div id="txt">
 					<strong> Curr. Addm. section:</strong>{% if coursec.0.8 %} {{coursec.0.8}} {% else %} NA {% endif %} |
 					  &nbsp
-					 <strong> Change current section? </strong>
+					 <strong> Change Addm. section? </strong>
 					 <select name="new_curr_sec">
 					 	{% for sec in coursec.1 %}
 					 		<option value="{{ sec.0 }}"> {{ sec.1 }} </option>

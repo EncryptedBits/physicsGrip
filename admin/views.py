@@ -36,7 +36,7 @@ def adminloginrequest(request):
 			msg = "DATABASE ERROR : Connection not established..."
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 	if request.method == 'POST':
 		print request.POST
 		username = request.POST['admin_name']
@@ -45,7 +45,7 @@ def adminloginrequest(request):
 		usr = User.objects.get(username=username)
 		if not usr or not usr.is_staff:
 			db.close()
-			return render(request, 'errorpage.html', {'error_msg': "User does not exists..."})
+			return render(request, 'admin/errorpage.html', {'error_msg': "User does not exists..."})
 		else:
 			user = authenticate(username=username, password=password)
 			if user is not None and user.is_staff:
@@ -55,9 +55,9 @@ def adminloginrequest(request):
 				db.close()
 				return redirect('/admin/')
 			else:
-				return render(request, 'errorpage.html', {'error_msg': "Password Incorrect..."})
+				return render(request, 'admin/errorpage.html', {'error_msg': "Password Incorrect..."})
 	else:
-		return render(request, 'errorpage.html', {'error_msg': "Login from login page..."})
+		return render(request, 'admin/errorpage.html', {'error_msg': "Login from login page..."})
 
 @user_passes_test(check_admin,login_url='/admin/login/')
 def adminlogoutrequest(request):
@@ -71,7 +71,7 @@ def adminlogoutrequest(request):
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
 
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 	try:
 		logout(request)
 		del request.session['username']
@@ -79,7 +79,7 @@ def adminlogoutrequest(request):
 		return render(request, 'custom_page.html', {'title': "SUCCESS", 'header': "LOGOUT", 'msg': "LOGOUT SUCCESSFUL. SIGN IN FOR MORE..."})
 	except Exception as e:
 		print ">>> ERROR :",e
-		return render(request, 'errorpage.html',{'error_msg': "LOGOUT UNSUCCESSFULL..."})
+		return render(request, 'admin/errorpage.html',{'error_msg': "LOGOUT UNSUCCESSFULL..."})
 
 
 @user_passes_test(check_admin,login_url='/admin/login/')
@@ -93,7 +93,7 @@ def render_adminhome(request):
 			msg = "DATABASE ERROR : Connection not established..."
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 	try:
 		context = {}
 		q_c = """ SELECT COUNT(*) FROM COURSES """
@@ -141,7 +141,7 @@ def render_adminhome(request):
 		else:
 			msg = "INTERNAL ERROR : Data not retrieved..."
 		db.close()
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 
 @user_passes_test(check_admin,login_url='/admin/login/')
 def view_or_delete_due(request):
@@ -155,7 +155,7 @@ def view_or_delete_due(request):
 			msg = "DATABASE ERROR : Connection not established..."
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 	if request.method == 'POST':
 		print ">>> CHECK : ", str(request.POST['submt'])
 		if str(request.POST.get('submt')) == str("delete") :
@@ -185,7 +185,7 @@ def view_or_delete_due(request):
 				print ">>> ERROR : ",e
 				msg = "DATABASE ERROR : Paid students not updated. Try again."
 				db.close()
-				return render(request, 'errorpage.html', {'error_msg' : msg})
+				return render(request, 'admin/errorpage.html', {'error_msg' : msg})
 
 		else:
 			print "2nd Entered"
@@ -239,10 +239,10 @@ def courses_render(request):
 			msg = "DATABASE ERROR : Connection not established..."
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 	try:
 		q = """ SELECT name, fee, no_of_stud, pre_req, course_beg, course_end,
-		 admsn_beg, admsn_end, curr_addm_sec, courseID FROM COURSES """
+		 admsn_beg, admsn_end, curr_addm_sec, courseID, class FROM COURSES """
 		cursor.execute(q)
 		course_data = cursor.fetchall()
 		course_ids = []
@@ -254,6 +254,7 @@ def courses_render(request):
 			cursor.execute(qq)
 			sections_for_each_course.append(cursor.fetchall())
 		course_sec = zip(course_data, sections_for_each_course)
+		#q3 = "select name from SECTION where sectionID = %d"%()
 		q2 = """ SELECT subjectID, name FROM SUBJECTS """
 		cursor.execute(q2)
 		subjects = cursor.fetchall()
@@ -266,7 +267,7 @@ def courses_render(request):
 		else:
 			msg = "INTERNAL ERROR : COURSES DATA NOT FOUND..."
 		db.close()
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 
 @user_passes_test(check_admin,login_url='/admin/login/')
 def create_course(request):
@@ -279,11 +280,12 @@ def create_course(request):
 			msg = "DATABASE ERROR : Connection not established..."
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 	if request.method == 'POST':
 		course_form = courseForm(request.POST)
 		if course_form.is_valid():
 			c_name = course_form.cleaned_data['c_name']
+			classs = course_form.cleaned_data['classs']
 			fee = course_form.cleaned_data['fee']
 			pre_req = course_form.cleaned_data['pre_req']
 			adm_beg = course_form.cleaned_data['adm_beg']
@@ -299,8 +301,8 @@ def create_course(request):
 
 			try:
 				q = """ INSERT INTO COURSES(name,fee,no_of_stud,pre_req,course_beg,course_end,
-				admsn_beg, admsn_end) VALUES ('%s', %d, %d, '%s','%s','%s','%s','%s') 
-				"""%(c_name, fee,0, pre_req,c_beg, c_end,adm_beg, adm_end)
+				admsn_beg, admsn_end, class) VALUES ('%s', %d, %d, '%s','%s','%s','%s','%s', %d) 
+				"""%(c_name, fee,0, pre_req,c_beg, c_end,adm_beg, adm_end, classs)
 				cursor.execute(q)
 				print "passed"
 				q1 = """ SELECT courseID from COURSES WHERE name = '%s' """%(c_name)
@@ -326,7 +328,8 @@ def create_course(request):
 					cursor.execute(q0)
 				db.commit()
 				db.close()
-				return render(request, 'custom_page.html', {'header': "SUCCESS", 'msg' : "COURSE CREATED SUCCESSFULLY"})
+				return redirect('/admin/course/')
+				#return render(request, 'custom_page.html', {'header': "SUCCESS", 'msg' : "COURSE CREATED SUCCESSFULLY"})
 			except Exception as e:
 				print ">>> ERROR", e
 				db.rollback()
@@ -335,15 +338,15 @@ def create_course(request):
 				else:
 					msg = "INTERNAL ERROR : COURSE NOT CREATED PROPERLY..."
 				db.close()
-				return render(request, 'errorpage.html', {'error_msg': msg})
+				return render(request, 'admin/errorpage.html', {'error_msg': msg})
 		else:
 			msg = "INPUT DATA IS INVALID..."
 			db.close()
-			return render(request, 'errorpage.html', {'error_msg' : msg})
+			return render(request, 'admin/errorpage.html', {'error_msg' : msg})
 	else:
 		msg = "PROCEED PROPERLY USING GIVEN LINKS, NOT BY ENTERING URLS..."
 		db.close()
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 
 @user_passes_test(check_admin,login_url='/admin/login/')
 def process_course(request):
@@ -356,8 +359,9 @@ def process_course(request):
 			msg = "DATABASE ERROR : Connection not established..."
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 	if request.method == 'POST':
+		print request.POST
 		if request.POST.get('submit1', None):
 			new_curr_sec = int(request.POST['new_curr_sec'])
 			curr_course = int(request.POST['submit1'])
@@ -375,13 +379,15 @@ def process_course(request):
 				else:
 					msg = "INTERNAL ERROR : CURR SECTION NOT UPDATED..."
 				db.close()
-				return render(request, 'errorpage.html', {'error_msg': msg})
+				return render(request, 'admin/errorpage.html', {'error_msg': msg})
 		elif request.POST.get('submit2', None) :
 			curr_course = int(request.POST['submit2'])
+			print ">>> CURR COURSE",curr_course
 			try:
 				q = """ DELETE FROM COURSES where courseID = %d """%(curr_course)
 				cursor.execute(q)
 				db.commit()
+				return redirect('/admin/course/')
 			except Exception as e:
 				db.rollback()
 				print ">>> ERROR",e
@@ -390,7 +396,7 @@ def process_course(request):
 				else:
 					msg = "INTERNAL ERROR : COURSE NOT DELETED..."
 				db.close()
-				return render(request, 'errorpage.html', {'error_msg': msg})
+				return render(request, 'admin/errorpage.html', {'error_msg': msg})
 		elif request.POST.get('submit3', None) :
 			curr_course = int(request.POST['submit3'])
 			try:
@@ -408,7 +414,7 @@ def process_course(request):
 				else:
 					msg = "INTERNAL ERROR : SECTION NOT RETRIEVED..."
 				db.close()
-				return render(request, 'errorpage.html', {'error_msg': msg})
+				return render(request, 'admin/errorpage.html', {'error_msg': msg})
 
 @user_passes_test(check_admin,login_url='/admin/login/')
 def gallery_render(request):
@@ -425,7 +431,7 @@ def upload_gallery(request):
 			msg = "DATABASE ERROR : Connection not established..."
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 
 	if request.method == 'POST' :
 		gallery_form = galleryForm(request.POST, request.FILES)
@@ -440,7 +446,7 @@ def upload_gallery(request):
 				cursor.execute(q)
 				db.commit()
 				db.close()
-				return render(request, 'custom_page.html',{'header': "SUCCESS" ,'msg': "PHOTO SUCCESSFULLY UPLOADED..."})
+				return render(request, 'admin/custom_page.html',{'header': "SUCCESS" ,'msg': "PHOTO SUCCESSFULLY UPLOADED..."})
 			except Exception as e:
 				print ">>> ERROR : ", e
 				if settings.DEBUG:
@@ -448,10 +454,10 @@ def upload_gallery(request):
 				else:
 					msg = "INTERNAL ERROR : GALLERY PHOTO NOT UPLOADED..."
 				db.close()
-				return render(request, 'errorpage.html', {'error_msg': msg})
+				return render(request, 'admin/errorpage.html', {'error_msg': msg})
 		else:
 			db.close()
-			return render(request, 'errorpage.html',{'error_msg': "The entered data is invalid..."})
+			return render(request, 'admin/errorpage.html',{'error_msg': "The entered data is invalid..."})
 
 
 @user_passes_test(check_admin,login_url='/admin/login/')
@@ -469,7 +475,7 @@ def upload_ambassadors(request):
 			msg = "DATABASE ERROR : Connection not established..."
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 
 	if request.method == 'POST' :
 		amb_form = ambForm(request.POST, request.FILES)
@@ -485,7 +491,7 @@ def upload_ambassadors(request):
 				cursor.execute(q)
 				db.commit()
 				db.close()
-				return render(request, 'custom_page.html',{'header': "SUCCESS" ,'msg': "AMBASSADOR SUCCESSFULLY UPLOADED..."})
+				return render(request, 'admin/custom_page.html',{'header': "SUCCESS" ,'msg': "AMBASSADOR SUCCESSFULLY UPLOADED..."})
 			except Exception as e:
 				print ">>> ERROR : ", e
 				if settings.DEBUG:
@@ -493,10 +499,10 @@ def upload_ambassadors(request):
 				else:
 					msg = "INTERNAL ERROR : AMBASSADOR NOT UPLOADED..."
 				db.close()
-				return render(request, 'errorpage.html', {'error_msg': msg})
+				return render(request, 'admin/errorpage.html', {'error_msg': msg})
 		else:
 			db.close()
-			return render(request, 'errorpage.html',{'error_msg': "The entered data is invalid..."})
+			return render(request, 'admin/errorpage.html',{'error_msg': "The entered data is invalid..."})
 
 @user_passes_test(check_admin,login_url='/admin/login/')
 def subject_render(request):
@@ -509,7 +515,7 @@ def subject_render(request):
 			msg = "DATABASE ERROR : Connection not established..."
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 	try:
 		q = """ SELECT * FROM SUBJECTS """
 		cursor.execute(q)
@@ -523,7 +529,7 @@ def subject_render(request):
 		else:
 			msg = "INTERNAL ERROR : SUBJECTS DATA NOT FOUND..."
 		db.close()
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 
 @user_passes_test(check_admin,login_url='/admin/login/')
 def create_subject(request):
@@ -536,7 +542,7 @@ def create_subject(request):
 			msg = "DATABASE ERROR : Connection not established..."
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 	if request.method == 'POST':
 		if request.POST.get('add',None):
 			sub_form = subjectForm(request.POST)
@@ -551,7 +557,8 @@ def create_subject(request):
 					cursor.execute(q)
 					db.commit()
 					db.close()
-					return render(request, 'custom_page.html', {'header': "SUCCESS", 'msg' : "SUBJECT CREATED SUCCESSFULLY"})
+					#return render(request, 'custom_page.html', {'header': "SUCCESS", 'msg' : "SUBJECT CREATED SUCCESSFULLY"})
+					return redirect('/admin/subject/')
 				except Exception as e:
 					print ">>> ERROR", e
 					db.rollback()
@@ -560,11 +567,12 @@ def create_subject(request):
 					else:
 						msg = "INTERNAL ERROR : SUBJECT NOT CREATED..."
 					db.close()
-					return render(request, 'errorpage.html', {'error_msg': msg})
+					return render(request, 'admin/errorpage.html', {'error_msg': msg})
+
 			else:
 				msg = "INPUT DATA IS INVALID..."
 				db.close()
-				return render(request, 'errorpage.html', {'error_msg' : msg})
+				return render(request, 'admin/errorpage.html', {'error_msg' : msg})
 		else:
 			try:
 				print ">>> ---",request.POST.get('delete')
@@ -575,7 +583,7 @@ def create_subject(request):
 				cursor.execute(q2)
 				db.commit()
 				db.close()
-				return render(request, 'custom_page.html',{'heading' : "SUCCESS", 'msg' : "SUBJECT DELETED SUCCESSFULLY"})
+				return render(request, 'admin/custom_page.html',{'heading' : "SUCCESS", 'msg' : "SUBJECT DELETED SUCCESSFULLY"})
 			except Exception as e:
 				db.rollback()
 				print ">>> ERROR",e
@@ -584,11 +592,11 @@ def create_subject(request):
 				else:
 					msg = "INTERNAL ERROR : SUBJECTS NOT DELETED..."
 				db.close()
-				return render(request, 'errorpage.html', {'error_msg': msg})
+				return render(request, 'admin/errorpage.html', {'error_msg': msg})
 	else:
 		msg = "PROCEED PROPERLY USING GIVEN LINKS, NOT BY ENTERING URLS..."
 		db.close()
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 
 
 @user_passes_test(check_admin,login_url='/admin/login/')
@@ -606,8 +614,9 @@ def process_section(request):
 			msg = "DATABASE ERROR : Connection not established..."
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 	if request.method == 'POST':
+		print ">>> SECTION", request.POST
 		if request.POST.get('add',None):
 			new_sec = secForm(request.POST)
 			if new_sec.is_valid():
@@ -616,12 +625,12 @@ def process_section(request):
 				curr_year = new_sec.cleaned_data['curr_year']
 				course = int(request.POST['add'])
 				try:
-					q = """ INSERT INTO SECTION VALUES(NULL, '%s', '%s', '%s', %d , %d)
+					q = """ INSERT INTO SECTION(name, class, current_year, no_of_stud, course) VALUES( '%s', '%s', '%s', %d , %d)
 					 """%(sec_name,std, curr_year, 0, course )
 					cursor.execute(q)
 					db.commit()
 					db.close()
-					return render(request, 'custom_page.html', {'header':"SUCCESS", 'msg':"SECTION SUCCESSFULLY ADDED..."})
+					return render(request, 'admin/custom_page.html', {'header':"SUCCESS", 'msg':"SECTION SUCCESSFULLY ADDED..."})
 				except Exception as e:
 					db.rollback()
 					print ">>> ERROR", e
@@ -630,14 +639,14 @@ def process_section(request):
 					else:
 						msg = "INTERNAL ERROR : SECTION NOT ADDED..."
 					db.close()
-					return render(request, 'errorpage.html', {'error_msg': msg})
+					return render(request, 'admin/errorpage.html', {'error_msg': msg})
 			else:
 				if settings.DEBUG:
 					msg = "ERROR : INVALID DATA..."
 				else:
 					msg = "ERROR : INVALID DATA..."
 				db.close()
-				return render(request, 'errorpage.html', {'error_msg': msg})
+				return render(request, 'admin/errorpage.html', {'error_msg': msg})
 		else:
 			s_c = request.POST['delete']
 			sid, cid = map(int, s_c.split('-'))
@@ -646,7 +655,7 @@ def process_section(request):
 				cursor.execute(q)
 				db.commit()
 				db.close()
-				return render(request, 'custom_page.html', {'header': "SUCCESS", 'msg': "SUCCESSFULLY DELETED..."})
+				return render(request, 'admin/custom_page.html', {'header': "SUCCESS", 'msg': "SUCCESSFULLY DELETED..."})
 			except Exception as e:
 				db.rollback()
 				print  e
@@ -655,7 +664,7 @@ def process_section(request):
 				else:
 					msg = "INTERNAL ERROR : SECTION NOT DELETED..."
 				db.close()
-				return render(request, 'errorpage.html', {'error_msg': msg})
+				return render(request, 'admin/errorpage.html', {'error_msg': msg})
 
 def search_render(request):
 	return render(request, 'admin/search.html',{})
@@ -670,7 +679,7 @@ def return_courses(request):
 			msg = "DATABASE ERROR : Connection not established..."
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 	std = request.POST.get('class', None)
 	print "CLASS: ",std
 	if int(std) != 0:
@@ -697,7 +706,7 @@ def return_sections(request):
 			msg = "DATABASE ERROR : Connection not established..."
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 	course = request.POST.get('course', None)
 	print "COURSE: ",course
 	if int(course) != 0:
@@ -723,7 +732,7 @@ def search_result(request):
 			msg = "DATABASE ERROR : Connection not established..."
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 
 	classs = request.POST.get('class', None)
 	course = request.POST.get('course', None)
@@ -751,25 +760,108 @@ def searchbyname_result(request):
 			msg = "DATABASE ERROR : Connection not established..."
 		else:
 			msg = "INTERNAL ERROR : Connection not established..."
-		return render(request, 'errorpage.html', {'error_msg': msg})
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
 
-	qname = request.POST.get('name', None)
-	q = """ SELECT s.f_name, s.l_name, s.rollno, s.pathofdp, r.course_id from STUDENTS AS s INNER JOIN REGISTRATIONS AS r ON s.rollno = r.stud_roll WHERE s.f_name LIKE '%s%s%s'  """%("%",qname,"%")
+	qname = request.POST.get('search_name', None)
+	q = """ SELECT s.f_name, s.l_name, s.rollno, s.pathofdp, r.course_id from STUDENTS AS s INNER JOIN REGISTRATIONS AS r ON s.rollno = r.stud_roll WHERE s.f_name LIKE '%s%s%s' OR s.l_name LIKE '%s%s%s'  """%("%",qname,"%","%",qname,"%")
 	try:
 		cursor.execute(q)
 		students = cursor.fetchall()
-		data = {'total':0}
-		for s in students:
-			d = {}
-			d['f_name'] = s[0]
-			d['l_name'] = s[1]
-			d['rollno'] = s[2]
-			d['pathofdp'] = s[3]
-			d['course_id'] = s[4]
-
-			d['total'] += 1
-			data[str(data['total'])] = d
-
-		return JsonResponse(data)
+		context = {}
+		context['students'] = students
+		context['name'] = qname
+		context['total'] = len(students)
+		db.close()
+		return render(request, 'admin/search.html', context)
 	except Exception as e:
 		print ">>> ERROR",e
+		db.close()
+		if settings.DEBUG:
+			msg = "DATABASE ERROR : Students retrieval problem..."
+		else:
+			msg = "INTERNAL ERROR : Students retrieval problem..."
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
+
+@user_passes_test(check_admin,login_url='/admin/login/')
+def view_or_delete_student(request):
+	print ">>> POST : ",request.POST
+	try:
+		db = MySQLdb.connect("localhost","root","@mysql12","PHYSICSGRIP" )
+		cursor = db.cursor()
+	except Exception as e:
+		print ">>> ERROR : ",e
+		if settings.DEBUG :
+			msg = "DATABASE ERROR : Connection not established..."
+		else:
+			msg = "INTERNAL ERROR : Connection not established..."
+		return render(request, 'admin/errorpage.html', {'error_msg': msg})
+	if request.method == 'POST':
+		print ">>> CHECK : ", str(request.POST['submt'])
+		if str(request.POST.get('submt')) == str("delete") :
+			print "Entered in 1st..."
+			try:
+				q_due_reg = """ SELECT rollno from STUDENTS """
+				cursor.execute(q_due_reg)
+				due_studs = cursor.fetchall()
+				due_studs_str = []
+				for s in due_studs:
+					due_studs_str.append(str(s[0]))
+				roll_to_del = []
+				for roll in due_studs_str:
+					if request.POST.get(roll, None):
+						roll_to_del.append(int(roll))
+				if roll_to_del:
+					for roll in roll_to_del:
+						q = " DELETE FROM STUDENTS WHERE rollno = %d "%(int(roll))
+						cursor.execute(q)
+					db.commit()
+				print "redirected"
+				db.close()
+				return render(request, 'admin/custom_page.html', {'header' : "SUCCESS", 'msg' : "SUCCESSFULLY DELETED"})
+			except Exception as e:
+				db.rollback()
+				print ">>> ERROR : ",e
+				msg = "DATABASE ERROR : Students not deleted. Try again."
+				db.close()
+				return render(request, 'admin/errorpage.html', {'error_msg' : msg})
+
+		else:
+			print "2nd Entered"
+			roll_to_display = int(request.POST.get('submt').split(':')[-1].strip())
+			q1 = "select * from STUDENTS where rollno = %d "%(roll_to_display)
+			cursor.execute(q1)
+			print ">>> STUDENTs' details retrieved..."
+			result = cursor.fetchone()
+			context = {}
+			context['f_name'] = result[0]
+			context['l_name'] = result[1]
+			context['dob'] = result[2]
+			context['Fa_name'] = result[3]
+			context['Mo_name'] = result[4]
+			context['Mob1'] = result[5]
+			context['Mob2'] = result[6]
+			context['pswd'] = result[7]
+			context['town_vil'] = result[8]
+			context['zip_code'] = result[9]
+			context['addr'] = result[10]
+			context['pathofdp'] = result[11]
+			context['rollno'] = result[12]
+			context['DUE'] = result[13]
+			q2 = " select course_id, section, reg_no from REGISTRATIONS where stud_roll = %d " %(roll_to_display)
+			cursor.execute(q2)
+			stud_data = cursor.fetchone()
+			context['course_id'] = stud_data[0]
+			context['section_id'] = stud_data[1]
+			context['registration_no'] = stud_data[2]
+			q3 =  "select name from COURSES where courseID = %d" %(stud_data[0])
+			cursor.execute(q3)
+			crs = cursor.fetchone()
+			context['course'] = crs[0]
+			context['extend_page'] = 'admin/base.html'
+
+			q4 =  "select name from SECTION where sectionID = %d" %(stud_data[1])
+			cursor.execute(q4)
+			sec = cursor.fetchone()
+			context['section'] = sec[0]
+			db.close()
+			return render(request, 'accounts/student_profile.html', context)

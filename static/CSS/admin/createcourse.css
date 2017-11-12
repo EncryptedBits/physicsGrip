@@ -1,7 +1,7 @@
 
 #form-content{
 	width: 70%;
-	height: 570px;
+	height: 620px;
 	margin: 20px auto;
 	padding: 20px 0px;
 	background-color: #c0c0c0;
@@ -15,14 +15,14 @@
 }
 
 .left-content{
-	height: 500px;
+	height: 550px;
 	width: 35%; 
 	float: left;
 	text-align: right;
 	border-right: 1px solid black;
 }
 .right-content{
-	height: 500px;
+	height: 550px;
 	width: 64%; 
 	float: right;
 	text-align: left;
@@ -104,7 +104,7 @@
 
 #form-content1{
 	width: 70%;
-	height: 320px;
+	height: 380px;
 	margin: 20px auto;
 	padding: 20px 0px;
 	background-color: #c0c0c0;
@@ -113,7 +113,7 @@
 }
 
 .left-content1{
-	height: 280px;
+	height: 300px;
 	width: 50%; 
 	float: left;
 	text-align: right;
@@ -121,7 +121,7 @@
 }
 
 .right-content1{
-	height: 280px;
+	height: 300px;
 	width: 49%; 
 	float: right;
 	text-align: left;
@@ -152,7 +152,7 @@
 	height: 30px;
 	border-top: 1px solid black;
 	position: relative;
-	top: 290px;
+	top: 310px;
 	padding-left: 20px;
 }
 

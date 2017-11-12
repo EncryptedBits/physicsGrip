@@ -9,6 +9,11 @@ urlpatterns = [
 	url(r'^login/$', views.user_login),
 	url(r'^logout/$', views.user_logout),
 	url(r'^paymentedregistration/$', views.register_payment),
+	url(r'^schedule/$', views.render_schedule),
+	url(r'^shome/$', views.render_studenthome),
+
+
+
 	
 
 #    url(r'^$', views.render_home),

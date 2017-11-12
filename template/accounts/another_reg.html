@@ -1,0 +1,105 @@
+
+{% extends extend_page %}
+{% load static %}
+
+{% block pagetitle %}  Student | Physics Grip {% endblock %}
+
+{% block import %}
+
+	<link href="{% static 'CSS/accounts/base.css' %}" rel="stylesheet">
+	<link href="{% static 'CSS/accounts/student_profile.css' %}" rel="stylesheet">
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jqueryui.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+{% endblock %}
+
+{% block write_js %}
+
+{% endblock  %}
+
+{% block main_content  %}
+<form enctype="multipart/form-data" method="post" action="/accounts/anothercoursereg/">
+	{% csrf_token %}
+<div id="header">
+		<h2 style="color:#333"> NEW COURSE REGISTRATION </h2>
+	</div>
+	<div id="stud-details">
+		<div id="profile_pic" class="inline-class" >
+			<div id="inner-dp">
+				<img src="{{ pathofdp }}" width="160px" height="200px">
+			</div>
+		</div>
+
+		<div id="imp-info" class="inline-class">
+			<div class="ii">
+			<strong> {{ f_name }} {{ l_name }} </strong> <br /></div>
+			<div class="ii">
+			<strong class="ii"> Roll no. : To be decided </strong> <br /></div>
+			<div class="ii">
+			<strong class="ii"> Course : {{ course }} </strong> <br />
+			</div>
+			<div class="ii">
+			<strong class="ii"> Section : {{ section }} </strong> <br />
+			</div>
+
+
+		</div>
+
+		<div id="other-info">
+			<div class="oi-l inline-class">
+				<div class="oi-ele">
+					<strong>Registration No. :</strong>
+				</div>
+				<div class="oi-ele">
+					<strong>Date of Birth :</strong>
+				</div>
+				<div class="oi-ele">
+					 <strong>Mobile No :</strong>
+				</div>
+				<div class="oi-ele">
+					<strong>Father's Name :</strong>
+				</div>
+				<div class="oi-ele">
+					<strong>Mother's Name :</strong>
+				</div>
+				<div class="oi-ele">
+					<strong>Address :</strong>
+				</div>
+				<div class="oi-ele">
+					<strong>Due Fee(Rs) :</strong>
+				</div>
+			</div>
+			<div class="oi-r inline-class">
+				<div class="oi-val">
+					 To be decided
+				</div>
+				<div class="oi-val">
+					{{ dob }}
+				</div>
+				<div class="oi-val">
+					{{ Mob1 }} , {{ Mob2 }}
+				</div>
+				<div class="oi-val">
+					{{ Fa_name }}
+				</div>
+				<div class="oi-val">
+					{{ Mo_name }}
+				</div>
+				<div class="oi-val">
+					{{ addr }} {{ town_vill }} {{ zip_code }}
+				</div>
+				<div class="oi-val">
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+    <button type="submit" name="register" value="pay_now" class='buttons'> PROCEED TO PAY </button>
+    <button type="submit" name="register" value="pay_later" class='buttons'> PAY LATER </button>
+</form>
+
+{% endblock %}

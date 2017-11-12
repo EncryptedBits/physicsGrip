@@ -168,4 +168,5 @@ STATICFILES_DIRS = (
 
 #VARIABLES USED IN PROJECT
 SECTION_MAX_LIMIT = 100
+DEFAULT_DP = os.path.join(os.path.join(os.path.join(BASE_DIR, 'media'), 'User_dp'),'defaultDP.png')
 

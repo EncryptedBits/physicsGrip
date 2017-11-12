@@ -26,10 +26,40 @@ create table COURSES (
 	course_end DATE,
 	admsn_beg DATE,
 	admsn_end DATE,
-	curr_addm_sec INT NOT NULL DEFAULT 1,
+	curr_addm_sec INT DEFAULT 1,
 	class INT NOT NULL,
 	FOREIGN KEY (curr_addm_sec) REFERENCES SECTION(sectionID) ON DELETE SET NULL ON UPDATE CASCADE,
 	PRIMARY KEY (courseID)
+);
+
+create table SCHEDULE(
+    scheduleID INT NOT NULL AUTO_INCREMENT,
+    mon_beg VARCHAR(20),
+    mon_end VARCHAR(20),
+    tue_beg VARCHAR(20),
+    tue_end VARCHAR(20),
+    wed_beg VARCHAR(20),
+    wed_end VARCHAR(20),
+    thu_beg VARCHAR(20),
+    thu_end VARCHAR(20),
+    fri_beg VARCHAR(20),
+    fri_end VARCHAR(20),
+    sat_beg VARCHAR(20),
+    sat_end VARCHAR(20),
+    PRIMARY KEY (scheduleID)
+);
+
+create table SECTION(
+	sectionID INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(20),
+	class VARCHAR(15),
+	current_year VARCHAR(20),
+	no_of_stud INT,
+	course INT,
+	schedule INT,
+	FOREIGN KEY	(schedule) REFERENCES SCHEDULE (scheduleID) ON DELETE SET NULL,
+	FOREIGN KEY	(course) REFERENCES COURSES (courseID) ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY KEY (sectionID, course)
 );
 
 create table REGISTRATIONS (
@@ -38,10 +68,10 @@ create table REGISTRATIONS (
 	reg_time TIME,
 	stud_roll INT,
 	course_id INT,
-	section INT NOT NULL,
+	section INT,
 	FOREIGN KEY (section) REFERENCES SECTION(sectionID) ON DELETE SET NULL ON UPDATE CASCADE,
-	FOREIGN KEY (stud_roll) REFERENCES STUDENTS(rollno) ON DELETE CASCADE ON UPDATE CASCADE,
-	FOREIGN KEY (course_id) REFERENCES COURSES(courseID) ON DELETE SET NULL ON UPDATE CASCADE,
+	FOREIGN KEY (stud_roll) REFERENCES STUDENTS(rollno)  ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (course_id) REFERENCES COURSES(courseID)  ON DELETE SET NULL ON UPDATE CASCADE,
 	PRIMARY KEY (reg_no)
 );
 
@@ -85,16 +115,6 @@ create table INSTRUCTORS (
 	FOREIGN KEY (subject) REFERENCES SUBJECTS(subjectID) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
-create table SECTION(
-	sectionID INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(20),
-	class VARCHAR(15),
-	current_year VARCHAR(20),
-	no_of_stud INT,
-	course INT,
-	FOREIGN KEY	(course) REFERENCES COURSES (courseID) ON DELETE CASCADE ON UPDATE CASCADE,
-	PRIMARY KEY (sectionID, course)
-);
 
 create table COURSE_SUBJECT(
 	course_id INT,
@@ -139,14 +159,11 @@ create table AUX_STUDENTS (
 	PRIMARY KEY (aux_id)
 );
 
-CREATE TABLE HOME(
-	marq VARCHAR(200) NOT NULL,
-	cont_heading VARCHAR(32) NOT NULL,
-	content VARCHAR(1000) NOT NULL,
-	Mob1 VARCHAR(10) NOT NULL,
-	Mob2 VARCHAR(10),
-	mail VARCHAR(50)
-);
+ALTER TABLE STUDENTS AUTO_INCREMENT = 1001;
+ALTER TABLE COURSES AUTO_INCREMENT = 101;
+ALTER TABLE REGISTRATIONS AUTO_INCREMENT = 100001;
+ALTER TABLE SUBJECTS AUTO_INCREMENT = 11;
+ALTER TABLE TRANSACTIONS AUTO_INCREMENT = 1000001;
 
 
 #subjects, no. of lectures in course
