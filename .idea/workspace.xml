@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f961b8c-662e-44c2-8934-01826513c0c4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/views.py" afterPath="$PROJECT_DIR$/accounts/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/views.py" afterPath="$PROJECT_DIR$/admin/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physicsGrip/views.py" afterPath="$PROJECT_DIR$/physicsGrip/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physicsGrip/settings.py" afterPath="$PROJECT_DIR$/physicsGrip/settings.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,34 +20,20 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/accounts/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1197">
-              <caret line="333" column="125" lean-forward="false" selection-start-line="333" selection-start-column="125" selection-end-line="333" selection-end-column="125" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="788" column="125" lean-forward="false" selection-start-line="788" selection-start-column="125" selection-end-line="788" selection-end-column="125" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/physicsGrip/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="47" column="121" lean-forward="false" selection-start-line="47" selection-start-column="121" selection-end-line="47" selection-end-column="121" />
+            <state relative-caret-position="234">
+              <caret line="18" column="71" lean-forward="false" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="71" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/physicsGrip/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1906">
+              <caret line="126" column="38" lean-forward="true" selection-start-line="126" selection-start-column="38" selection-end-line="126" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -75,8 +59,8 @@
       <find>dropdown</find>
       <find>another</find>
       <find>return</find>
-      <find>(&quot;localhost&quot;,&quot;root&quot;,&quot;@mysql12&quot;,&quot;PHYSICSGRIP&quot; )</find>
       <find>(&quot;localhost&quot;, &quot;root&quot;, &quot;@mysql12&quot;, &quot;PHYSICSGRIP&quot;)</find>
+      <find>(&quot;localhost&quot;,&quot;root&quot;,&quot;@mysql12&quot;,&quot;PHYSICSGRIP&quot; )</find>
     </findStrings>
     <replaceStrings>
       <replace>'login' : user_loggedin})</replace>
@@ -126,12 +110,12 @@
         <option value="$PROJECT_DIR$/admin/forms.py" />
         <option value="$PROJECT_DIR$/template/admin/createcourse.html" />
         <option value="$PROJECT_DIR$/static/CSS/admin/createcourse.css" />
-        <option value="$PROJECT_DIR$/physicsGrip/settings.py" />
         <option value="$PROJECT_DIR$/template/admin/errorpage.html" />
         <option value="$PROJECT_DIR$/template/admin/custom_page.html" />
         <option value="$PROJECT_DIR$/physicsGrip/views.py" />
         <option value="$PROJECT_DIR$/accounts/views.py" />
         <option value="$PROJECT_DIR$/admin/views.py" />
+        <option value="$PROJECT_DIR$/physicsGrip/settings.py" />
       </list>
     </option>
   </component>
@@ -723,14 +707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/physicsGrip/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="170" column="10" lean-forward="false" selection-start-line="170" selection-start-column="10" selection-end-line="170" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/media/User_dp/defaultDP.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -814,8 +790,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/physicsGrip/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="47" column="121" lean-forward="false" selection-start-line="47" selection-start-column="121" selection-end-line="47" selection-end-column="121" />
+        <state relative-caret-position="234">
+          <caret line="18" column="71" lean-forward="false" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/physicsGrip/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1906">
+          <caret line="126" column="38" lean-forward="true" selection-start-line="126" selection-start-column="38" selection-end-line="126" selection-end-column="38" />
           <folding />
         </state>
       </provider>
